@@ -90,8 +90,12 @@ describe("ArticlesForm tests", () => {
 
     fireEvent.change(titleField, { target: { value: "Test Title" } });
     fireEvent.change(urlField, { target: { value: "test-article.com/1" } });
-    fireEvent.change(explanationField, { target: { value: "An explanation about article 1." } });
-    fireEvent.change(emailField, { target: { value: "author@test-article.com" } });
+    fireEvent.change(explanationField, {
+      target: { value: "An explanation about article 1." },
+    });
+    fireEvent.change(emailField, {
+      target: { value: "author@test-article.com" },
+    });
     fireEvent.change(dateAddedField, {
       target: { value: "2022-01-02T12:00:00" },
     });
