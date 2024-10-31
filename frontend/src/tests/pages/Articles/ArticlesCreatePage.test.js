@@ -98,7 +98,7 @@ describe("ArticlesCreatePage tests", () => {
       target: { value: "A very long explanation about article one." },
     });
     fireEvent.change(emailField, { target: { value: "article@email.com" } });
-    fireEvent.change(dateAdded, { target: { value: "2022-01-02T12:00" } });
+    fireEvent.change(dateAddedField, { target: { value: "2022-01-02T12:00" } });
 
     expect(submitButton).toBeInTheDocument();
 
