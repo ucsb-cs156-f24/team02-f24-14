@@ -56,9 +56,7 @@ describe("ArticlesCreatePage tests", () => {
     );
 
     await waitFor(() => {
-      expect(
-        screen.getByTestId("ArticlesForm-title"),
-      ).toBeInTheDocument();
+      expect(screen.getByTestId("ArticlesForm-title")).toBeInTheDocument();
     });
   });
 
@@ -84,9 +82,7 @@ describe("ArticlesCreatePage tests", () => {
     );
 
     await waitFor(() => {
-      expect(
-        screen.getByTestId("ArticlesForm-title"),
-      ).toBeInTheDocument();
+      expect(screen.getByTestId("ArticlesForm-title")).toBeInTheDocument();
     });
 
     const titleField = screen.getByTestId("ArticlesForm-title");
@@ -98,7 +94,9 @@ describe("ArticlesCreatePage tests", () => {
 
     fireEvent.change(titleField, { target: { value: "Article One" } });
     fireEvent.change(urlField, { target: { value: "article-ones-url" } });
-    fireEvent.change(explanationField, { target: { value: "A very long explanation about article one." } });
+    fireEvent.change(explanationField, {
+      target: { value: "A very long explanation about article one." },
+    });
     fireEvent.change(emailField, { target: { value: "article@email.com" } });
     fireEvent.change(dateAdded, { target: { value: "2022-01-02T12:00" } });
 
