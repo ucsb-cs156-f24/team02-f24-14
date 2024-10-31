@@ -341,6 +341,5 @@ public class RecommendationRequestsControllerTests extends ControllerTestCase {
             Map<String, Object> json = responseToJson(response);
             assertEquals("RecommendationRequest with id 67 not found", json.get("message"));
     
-    }
-            
+    }       
 }
