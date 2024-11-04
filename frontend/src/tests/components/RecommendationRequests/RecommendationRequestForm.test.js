@@ -139,14 +139,14 @@ describe("RecommendationRequestForm tests", () => {
       screen.queryByText(/RequesterEmail must be a valid email address/),
     ).not.toBeInTheDocument();
     expect(
-        screen.queryByText(/ProfessorEmail must be a valid email address/),
-      ).not.toBeInTheDocument();
+      screen.queryByText(/ProfessorEmail must be a valid email address/),
+    ).not.toBeInTheDocument();
     expect(
       screen.queryByText(/DateRequested must be in ISO format/),
     ).not.toBeInTheDocument();
     expect(
-        screen.queryByText(/DateNeeded must be in ISO format/),
-      ).not.toBeInTheDocument();
+      screen.queryByText(/DateNeeded must be in ISO format/),
+    ).not.toBeInTheDocument();
   });
 
   test("that navigate(-1) is called when Cancel is clicked", async () => {
