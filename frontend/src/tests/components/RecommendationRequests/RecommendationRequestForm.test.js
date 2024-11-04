@@ -55,8 +55,8 @@ describe("RecommendationRequestForm tests", () => {
       "RecommendationRequestForm-dateRequested",
     );
     const dateNeededField = screen.getByTestId(
-        "RecommendationRequestForm-dateNeeded",
-      );
+      "RecommendationRequestForm-dateNeeded",
+    );
     const submitButton = screen.getByTestId("RecommendationRequestForm-submit");
 
     fireEvent.change(requesterEmailField, { target: { value: "bad-email" } });
