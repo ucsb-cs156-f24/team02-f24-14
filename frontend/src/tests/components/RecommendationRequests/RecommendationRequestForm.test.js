@@ -66,6 +66,9 @@ describe("RecommendationRequestForm tests", () => {
     fireEvent.click(submitButton);
 
     await screen.findByText(/RequesterEmail must be a valid email address/);
+    await screen.findByText(/ProfessorEmail must be valid./);
+    await screen.findByText(/Date needed must be valid./);
+    await screen.findByText(/Date requested must be valid./);
   });
 
   test("Correct Error messages on missing input", async () => {
@@ -82,6 +85,7 @@ describe("RecommendationRequestForm tests", () => {
     await screen.findByText(/RequesterEmail is required./);
     expect(screen.getByText(/ProfessorEmail is required./)).toBeInTheDocument();
     expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
+    expect(screen.getByText(/Date needed is required./)).toBeInTheDocument();
     expect(screen.getByText(/DateRequested is required./)).toBeInTheDocument();
   });
 
@@ -135,8 +139,14 @@ describe("RecommendationRequestForm tests", () => {
       screen.queryByText(/RequesterEmail must be a valid email address/),
     ).not.toBeInTheDocument();
     expect(
+        screen.queryByText(/ProfessorEmail must be a valid email address/),
+      ).not.toBeInTheDocument();
+    expect(
       screen.queryByText(/DateRequested must be in ISO format/),
     ).not.toBeInTheDocument();
+    expect(
+        screen.queryByText(/DateNeeded must be in ISO format/),
+      ).not.toBeInTheDocument();
   });
 
   test("that navigate(-1) is called when Cancel is clicked", async () => {

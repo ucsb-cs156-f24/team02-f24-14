@@ -102,6 +102,8 @@ function RecommendationRequestForm({
             />
             <Form.Control.Feedback type="invalid">
               {errors.dateNeeded && "Date needed is required."}
+              {errors.dateNeeded?.type === "pattern" &&
+                "Date needed must be valid."}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -121,6 +123,8 @@ function RecommendationRequestForm({
             />
             <Form.Control.Feedback type="invalid">
               {errors.dateRequested && "DateRequested is required."}
+              {errors.dateRequested?.type === "pattern" &&
+                "Date requested must be valid."}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
