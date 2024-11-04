@@ -25,7 +25,9 @@ describe("RecommendationRequestForm tests", () => {
     render(
       <Router>
         <RecommendationRequestForm
-          initialContents={recommendationRequestsFixtures.oneRecommendationRequest}
+          initialContents={
+            recommendationRequestsFixtures.oneRecommendationRequest
+          }
         />
       </Router>,
     );
