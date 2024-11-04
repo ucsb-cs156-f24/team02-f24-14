@@ -24,12 +24,13 @@ describe("RecommendationRequestForm tests", () => {
   test("renders correctly when passing in a RecommendationRequest", async () => {
     render(
       <Router>
-        <RecommendationRequestForm initialContents={recommendationRequestFixtures.oneRequest} />
+        <RecommendationRequestForm initialContents={{ id: 1, requesterEmail: "student@ucsb.edu", professorEmail: "professor@ucsb.edu", explanation: "Request for letter", dateRequested: "2023-10-01T10:00", dateNeeded: "2023-12-01T10:00", done: false }} />
       </Router>,
     );
-    await screen.findByTestId(/RecommendationRequestForm-id/);
+  
+    await screen.findByTestId("RecommendationRequestForm-id");
     expect(screen.getByText(/Id/)).toBeInTheDocument();
-    expect(screen.getByTestId(/RecommendationRequestForm-id/)).toHaveValue("1");
+    expect(screen.getByTestId("RecommendationRequestForm-id")).toHaveValue("1");
   });
 
   test("Correct Error messages on bad input", async () => {

@@ -23,6 +23,7 @@ function RecommendationRequestForm({
   // Stryker disable Regex
   const isodate_regex =
     /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
+  const email_regex = /\S+@\S+\.\S+/;
   // Stryker restore Regex
 
   // Stryker disable next-line all
@@ -61,9 +62,9 @@ function RecommendationRequestForm({
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.requesterEmail && "Requester email is required. "}
+              {errors.requesterEmail && "RequesterEmail is required."}
               {errors.requesterEmail?.type === "pattern" &&
-                "Requester email must be valid."}
+                "RequesterEmail must be a valid email address"}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -82,7 +83,7 @@ function RecommendationRequestForm({
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.professorEmail && "Professor email is required. "}
+              {errors.professorEmail && "ProfessorEmail is required."}
               {errors.professorEmail?.type === "pattern" &&
                 "Professor email must be valid."}
             </Form.Control.Feedback>
@@ -103,7 +104,7 @@ function RecommendationRequestForm({
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.dateNeeded && "Date needed is required. "}
+              {errors.dateNeeded && "Date needed is required."}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -122,7 +123,7 @@ function RecommendationRequestForm({
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.dateRequested && "Date requested is required. "}
+              {errors.dateRequested && "DateRequested is required."}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -142,7 +143,7 @@ function RecommendationRequestForm({
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.name?.message}
+              {errors.explanation && "Explanation is required."}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
