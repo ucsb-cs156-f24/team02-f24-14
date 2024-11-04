@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/6</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">23.52% </span>
+                <span class="strong">94.73% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/17</span>
+                <span class='fraction'>18/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/6</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -253,7 +253,8 @@
 <a name='L188'></a><a href='#L188'>188</a>
 <a name='L189'></a><a href='#L189'>189</a>
 <a name='L190'></a><a href='#L190'>190</a>
-<a name='L191'></a><a href='#L191'>191</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -267,23 +268,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -431,7 +433,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -468,6 +470,7 @@ function RecommendationRequestForm({
   // Stryker disable Regex
   const isodate_regex =
     /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
+  const email_regex = /\S+@\S+\.\S+/;
   // Stryker restore Regex
 &nbsp;
   // Stryker disable next-line all
@@ -477,7 +480,7 @@ function RecommendationRequestForm({
     &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
       &lt;Row&gt;
         {initialContents &amp;&amp; (
-<span class="branch-1 cbranch-no" title="branch not covered" >          &lt;Col&gt;</span>
+          &lt;Col&gt;
             &lt;Form.Group className="mb-3"&gt;
               &lt;Form.Label htmlFor="id"&gt;Id&lt;/Form.Label&gt;
               &lt;Form.Control
@@ -506,9 +509,9 @@ function RecommendationRequestForm({
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-              {errors.requesterEmail &amp;&amp; "Requester email is required. "}
+              {errors.requesterEmail &amp;&amp; "RequesterEmail is required."}
               {errors.requesterEmail?.type === "pattern" &amp;&amp;
-                "Requester email must be valid."}
+                "RequesterEmail must be a valid email address"}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
@@ -527,9 +530,9 @@ function RecommendationRequestForm({
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-              {errors.professorEmail &amp;&amp; "Professor email is required. "}
+              {errors.professorEmail &amp;&amp; "ProfessorEmail is required."}
               {errors.professorEmail?.type === "pattern" &amp;&amp;
-                "Professor email must be valid."}
+<span class="branch-1 cbranch-no" title="branch not covered" >                "Professor email must be valid."}</span>
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
@@ -548,7 +551,7 @@ function RecommendationRequestForm({
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-              {errors.dateNeeded &amp;&amp; "Date needed is required. "}
+              {errors.dateNeeded &amp;&amp; "Date needed is required."}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
@@ -567,7 +570,7 @@ function RecommendationRequestForm({
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-              {errors.dateRequested &amp;&amp; "Date requested is required. "}
+              {errors.dateRequested &amp;&amp; "DateRequested is required."}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
@@ -587,7 +590,7 @@ function RecommendationRequestForm({
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-              {errors.name?.message}
+              {errors.explanation &amp;&amp; "Explanation is required."}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
@@ -621,7 +624,7 @@ function RecommendationRequestForm({
           &lt;/Button&gt;
           &lt;Button
             variant="Secondary"
-            onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigate(-1)}</span>
+            onClick={() =&gt; navigate(-1)}
             data-testid="RecommendationRequestForm-cancel"
           &gt;
             Cancel
@@ -640,7 +643,7 @@ export default RecommendationRequestForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-11-04T21:55:40.504Z
+                at 2024-11-04T22:19:34.303Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
