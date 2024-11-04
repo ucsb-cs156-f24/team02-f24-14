@@ -54,12 +54,8 @@ function RecommendationRequestForm({
               type="text"
               isInvalid={Boolean(errors.requesterEmail)}
               {...register("requesterEmail", {
-                required: "An email is required.",
-                maxlength: 255,
-                pattern: {
-                  value: email_regex,
-                  message: "A valid email is required.",
-                },
+                required: true,
+                pattern: email_regex,
               })}
             />
             <Form.Control.Feedback type="invalid">
@@ -79,12 +75,8 @@ function RecommendationRequestForm({
               type="text"
               isInvalid={Boolean(errors.professorEmail)}
               {...register("professorEmail", {
-                required: "An email is required.",
-                maxlength: 255,
-                pattern: {
-                  value: email_regex,
-                  message: "A valid email is required.",
-                },
+                required: true,
+                pattern: email_regex,
               })}
             />
             <Form.Control.Feedback type="invalid">

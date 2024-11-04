@@ -47,12 +47,21 @@ describe("RecommendationRequestForm tests", () => {
     const requesterEmailField = screen.getByTestId(
       "RecommendationRequestForm-requesterEmail",
     );
+    await screen.findByTestId("RecommendationRequestForm-professorEmail");
+    const professorEmailField = screen.getByTestId(
+      "RecommendationRequestForm-professorEmail",
+    );
     const dateRequestedField = screen.getByTestId(
       "RecommendationRequestForm-dateRequested",
     );
+    const dateNeededField = screen.getByTestId(
+        "RecommendationRequestForm-dateNeeded",
+      );
     const submitButton = screen.getByTestId("RecommendationRequestForm-submit");
 
     fireEvent.change(requesterEmailField, { target: { value: "bad-email" } });
+    fireEvent.change(professorEmailField, { target: { value: "bad-email" } });
+    fireEvent.change(dateNeededField, { target: { value: "bad-date" } });
     fireEvent.change(dateRequestedField, { target: { value: "bad-date" } });
     fireEvent.click(submitButton);
 
