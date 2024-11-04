@@ -1,6 +1,6 @@
 import { render, waitFor, fireEvent, screen } from "@testing-library/react";
 import RecommendationRequestForm from "main/components/RecommendationRequests/RecommendationRequestForm";
-import { recommendationRequestsFixtures } from "fixtures/recommendationRequestFixtures";
+import { recommendationRequestsFixtures } from "fixtures/recommendationRequestsFixtures";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const mockedNavigate = jest.fn();
