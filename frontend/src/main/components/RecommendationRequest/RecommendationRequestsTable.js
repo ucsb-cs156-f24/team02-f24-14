@@ -48,27 +48,43 @@ export default function RecommendationRequestsTable({ requests, currentUser }) {
       accessor: "dateRequested",
     },
     {
-        Header: "Date Needed",
-        accessor: "dateNeeded",
+      Header: "Date Needed",
+      accessor: "dateNeeded",
     },
     {
-        Header: "Explanation",
-        accessor: "explanation",
+      Header: "Explanation",
+      accessor: "explanation",
     },
     {
-        Header: "Done",
-        accessor: "done",
+      Header: "Done",
+      accessor: "done",
     },
   ];
 
   if (hasRole(currentUser, "ROLE_ADMIN")) {
     columns.push(
-      ButtonColumn("Edit", "primary", editCallback, "RecommendationRequestsTable"),
+      ButtonColumn(
+        "Edit",
+        "primary",
+        editCallback,
+        "RecommendationRequestsTable",
+      ),
     );
     columns.push(
-      ButtonColumn("Delete", "danger", deleteCallback, "RecommendationRequestsTable"),
+      ButtonColumn(
+        "Delete",
+        "danger",
+        deleteCallback,
+        "RecommendationRequestsTable",
+      ),
     );
   }
 
-  return <OurTable data={requests} columns={columns} testid={"RecommendationRequestsTable"} />;
+  return (
+    <OurTable
+      data={requests}
+      columns={columns}
+      testid={"RecommendationRequestsTable"}
+    />
+  );
 }

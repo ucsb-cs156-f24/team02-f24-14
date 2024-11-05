@@ -24,15 +24,33 @@ describe("UserTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <RecommendationRequestsTable
-            requests={recommendationRequestsFixtures.threeRecommendationRequests}
+            requests={
+              recommendationRequestsFixtures.threeRecommendationRequests
+            }
             currentUser={currentUser}
           />
         </MemoryRouter>
       </QueryClientProvider>,
     );
 
-    const expectedHeaders = ["id", "Requester Email", "Professor Email", "Date Requested", "Date Needed", "Explanation", "Done"];
-    const expectedFields = ["id", "requesterEmail", "professorEmail", "dateRequested", "dateNeeded", "explanation", "done"];
+    const expectedHeaders = [
+      "id",
+      "Requester Email",
+      "Professor Email",
+      "Date Requested",
+      "Date Needed",
+      "Explanation",
+      "Done",
+    ];
+    const expectedFields = [
+      "id",
+      "requesterEmail",
+      "professorEmail",
+      "dateRequested",
+      "dateNeeded",
+      "explanation",
+      "done",
+    ];
     const testId = "RecommendationRequestsTable";
 
     expectedHeaders.forEach((headerText) => {
@@ -70,15 +88,33 @@ describe("UserTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <RecommendationRequestsTable
-            requests={recommendationRequestsFixtures.threeRecommendationRequests}
+            requests={
+              recommendationRequestsFixtures.threeRecommendationRequests
+            }
             currentUser={currentUser}
           />
         </MemoryRouter>
       </QueryClientProvider>,
     );
 
-    const expectedHeaders = ["id", "Requester Email", "Professor Email", "Date Requested", "Date Needed", "Explanation", "Done"];
-    const expectedFields = ["id", "requesterEmail", "professorEmail", "dateRequested", "dateNeeded", "explanation", "done"];
+    const expectedHeaders = [
+      "id",
+      "Requester Email",
+      "Professor Email",
+      "Date Requested",
+      "Date Needed",
+      "Explanation",
+      "Done",
+    ];
+    const expectedFields = [
+      "id",
+      "requesterEmail",
+      "professorEmail",
+      "dateRequested",
+      "dateNeeded",
+      "explanation",
+      "done",
+    ];
     const testId = "RecommendationRequestsTable";
 
     expectedHeaders.forEach((headerText) => {
@@ -118,7 +154,9 @@ describe("UserTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <RecommendationRequestsTable
-            requests={recommendationRequestsFixtures.threeRecommendationRequests}
+            requests={
+              recommendationRequestsFixtures.threeRecommendationRequests
+            }
             currentUser={currentUser}
           />
         </MemoryRouter>
@@ -139,7 +177,9 @@ describe("UserTable tests", () => {
     fireEvent.click(editButton);
 
     await waitFor(() =>
-      expect(mockedNavigate).toHaveBeenCalledWith("/recommendationrequests/edit/1"),
+      expect(mockedNavigate).toHaveBeenCalledWith(
+        "/recommendationrequests/edit/1",
+      ),
     );
   });
 
@@ -157,7 +197,9 @@ describe("UserTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <RecommendationRequestsTable
-            requests={recommendationRequestsFixtures.threeRecommendationRequests}
+            requests={
+              recommendationRequestsFixtures.threeRecommendationRequests
+            }
             currentUser={currentUser}
           />
         </MemoryRouter>
