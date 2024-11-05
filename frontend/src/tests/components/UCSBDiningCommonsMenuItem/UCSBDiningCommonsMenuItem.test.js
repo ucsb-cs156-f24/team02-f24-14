@@ -25,9 +25,9 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
         <UCSBDiningCommonsMenuItemForm initialContents={ucsbDiningCommonsMenuItemFixtures.oneDate} />
       </Router>,
     );
-    await screen.findByTestId(/UCSBDiningCommonsMenuItemForm-id/);
+    await screen.findByTestId("UCSBDiningCommonsMenuItemForm-id");
     expect(screen.getByText(/Id/)).toBeInTheDocument();
-    expect(screen.getByTestId(/UCSBDiningCommonsMenuItemForm-id/)).toHaveValue("1");
+    expect(screen.getByTestId("UCSBDiningCommonsMenuItemForm-id")).toHaveValue("1");
   });
 
   test("Correct Error messsages on bad input", async () => {
@@ -36,9 +36,6 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
         <UCSBDiningCommonsMenuItemForm />
       </Router>,
     );
-    const diningCommonsCodeField = screen.getByTestId("UCSBDiningCommonsMenuItemForm-diningCommonsCode");
-    const nameField = screen.getByTestId("UCSBDiningCommonsMenuItemForm-name");
-    const stationField = screen.getByTestId("UCSBDiningCommonsMenuItemForm-station");
     const submitButton = screen.getByTestId("UCSBDiningCommonsMenuItemForm-submit");
 
     fireEvent.click(submitButton);
@@ -55,8 +52,8 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
 
     fireEvent.click(submitButton);
 
-    expect(screen.getByText(/Name is required./)).toBeInTheDocument();
-    expect(screen.getByText(/DiningCommonsCode is required./)).toBeInTheDocument();
+    await screen.findByText(/Name is required./);
+    expect(screen.getByText(/Dining Commons Code is required./)).toBeInTheDocument();
     expect(screen.getByText(/Station is required./)).toBeInTheDocument();
   });
 
