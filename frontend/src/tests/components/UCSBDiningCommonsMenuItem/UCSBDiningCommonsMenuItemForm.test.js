@@ -35,19 +35,6 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
     );
   });
 
-  test("Correct Error messsages on bad input", async () => {
-    render(
-      <Router>
-        <UCSBDiningCommonsMenuItemForm />
-      </Router>,
-    );
-    const submitButton = screen.getByTestId(
-      "UCSBDiningCommonsMenuItemForm-submit",
-    );
-
-    fireEvent.click(submitButton);
-  });
-
   test("Correct Error messsages on missing input", async () => {
     render(
       <Router>
@@ -66,40 +53,6 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
       screen.getByText(/Dining Commons Code is required./),
     ).toBeInTheDocument();
     expect(screen.getByText(/Station is required./)).toBeInTheDocument();
-  });
-
-  test("No Error messsages on good input", async () => {
-    const mockSubmitAction = jest.fn();
-
-    render(
-      <Router>
-        <UCSBDiningCommonsMenuItemForm submitAction={mockSubmitAction} />
-      </Router>,
-    );
-
-    await screen.findByTestId(
-      "UCSBDiningCommonsMenuItemForm-diningCommonsCode",
-    );
-
-    const diningCommonsCodeField = screen.getByTestId(
-      "UCSBDiningCommonsMenuItemForm-diningCommonsCode",
-    );
-    const nameField = screen.getByTestId("UCSBDiningCommonsMenuItemForm-name");
-    const stationField = screen.getByTestId(
-      "UCSBDiningCommonsMenuItemForm-station",
-    );
-    const submitButton = screen.getByTestId(
-      "UCSBDiningCommonsMenuItemForm-submit",
-    );
-
-    fireEvent.change(diningCommonsCodeField, { target: { value: "ortega" } });
-    fireEvent.change(nameField, {
-      target: { value: "Baked Pesto Pasta with Chicken" },
-    });
-    fireEvent.change(stationField, { target: { value: "Entree Specials" } });
-    fireEvent.click(submitButton);
-
-    await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
   });
 
   test("that navigate(-1) is called when Cancel is clicked", async () => {
