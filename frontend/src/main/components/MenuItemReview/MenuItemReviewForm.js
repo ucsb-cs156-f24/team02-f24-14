@@ -55,7 +55,7 @@ function MenuItemReviewForm({
               type="number"
               isInvalid={Boolean(errors.itemId)}
               {...register("itemId", {
-                required: "ItemId is required."
+                required: "ItemId is required.",
               })}
             />
             <Form.Control.Feedback type="invalid">
@@ -66,7 +66,9 @@ function MenuItemReviewForm({
 
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="dateReviewed">Date Reviewed (iso format)</Form.Label>
+            <Form.Label htmlFor="dateReviewed">
+              Date Reviewed (iso format)
+            </Form.Label>
             <Form.Control
               data-testid="MenuItemReviewForm-dateReviewed"
               id="localDateTime"
@@ -100,7 +102,8 @@ function MenuItemReviewForm({
             />
             <Form.Control.Feedback type="invalid">
               {errors.reviewerEmail && "Reviewer Email is required."}
-              {errors.reviewerEmail?.type === "pattern" && "Reviewer Email must be a valid email address"}
+              {errors.reviewerEmail?.type === "pattern" &&
+                "Reviewer Email must be a valid email address"}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
