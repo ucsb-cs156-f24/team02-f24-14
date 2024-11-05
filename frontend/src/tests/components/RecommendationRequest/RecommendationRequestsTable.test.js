@@ -150,7 +150,7 @@ describe("UserTable tests", () => {
     const axiosMock = new AxiosMockAdapter(axios);
     axiosMock
       .onDelete("/api/recommendationrequests")
-      .reply(200, { message: "Date deleted" });
+      .reply(200, { message: "Request deleted" });
 
     // act - render the component
     render(
