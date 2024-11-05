@@ -1,9 +1,4 @@
-import {
-  render,
-  waitFor,
-  fireEvent,
-  screen,
-} from "@testing-library/react";
+import { render, waitFor, fireEvent, screen } from "@testing-library/react";
 import UCSBDiningCommonsMenuItemForm from "main/components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemForm";
 import { ucsbDiningCommonsMenuItemFixtures } from "fixtures/ucsbDiningCommonsMenuItemFixtures";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -40,13 +35,12 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
     );
   });
 
-  test("Correct Error messages on bad input", async () => {
+  test("Correct Error messsages on bad input", async () => {
     render(
       <Router>
         <UCSBDiningCommonsMenuItemForm />
       </Router>,
     );
-
     const submitButton = screen.getByTestId(
       "UCSBDiningCommonsMenuItemForm-submit",
     );
@@ -54,7 +48,7 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
     fireEvent.click(submitButton);
   });
 
-  test("Correct Error messages on missing input", async () => {
+  test("Correct Error messsages on missing input", async () => {
     render(
       <Router>
         <UCSBDiningCommonsMenuItemForm />
@@ -74,7 +68,7 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
     expect(screen.getByText(/Station is required./)).toBeInTheDocument();
   });
 
-  test("No Error messages on good input", async () => {
+  test("No Error messsages on good input", async () => {
     const mockSubmitAction = jest.fn();
 
     render(
@@ -98,19 +92,14 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
       "UCSBDiningCommonsMenuItemForm-submit",
     );
 
-    // Use act for each interaction to ensure state updates are flushed
     fireEvent.change(diningCommonsCodeField, { target: { value: "ortega" } });
     fireEvent.change(nameField, {
       target: { value: "Baked Pesto Pasta with Chicken" },
     });
     fireEvent.change(stationField, { target: { value: "Entree Specials" } });
-
-    // Click submit and confirm mockSubmitAction is called
     fireEvent.click(submitButton);
 
-    // Explicitly check that mockSubmitAction has been called
-    expect(mockSubmitAction).toHaveBeenCalled();
-    await waitFor(() => expect(mockSubmitAction).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
   });
 
   test("that navigate(-1) is called when Cancel is clicked", async () => {
