@@ -5,7 +5,6 @@ import { recommendationRequestFixtures } from "fixtures/recommendationRequestsFi
 import { http, HttpResponse } from "msw";
 
 import RecommendationRequestIndexPage from "main/pages/RecommendationRequest/RecommendationRequestIndexPage";
-import RecommendationRequestIndexPage from "main/pages/RecommendationRequest/RecommendationRequestIndexPage";
 
 export default {
   title: "pages/RecommendationRequest/RecommendationRequestIndexPage",
