@@ -54,7 +54,7 @@ function UCSBDiningCommonsMenuItemForm({
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.name && "Dining Commons Code is required."}
+              {errors.diningCommonsCode && "Dining Commons Code is required."}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -86,10 +86,8 @@ function UCSBDiningCommonsMenuItemForm({
               data-testid="UCSBDiningCommonsMenuItemForm-station"
               id="station"
               type="text"
-              isInvalid={Boolean(errors.name)}
-              {...register("station", {
-                required: "Station is valid.",
-              })}
+              isInvalid={Boolean(errors.station)}
+              {...register("station", {})}
             />
             <Form.Control.Feedback type="invalid">
               {errors.name && "Station is required."}
