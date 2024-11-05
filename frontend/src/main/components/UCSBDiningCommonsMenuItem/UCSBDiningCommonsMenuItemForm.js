@@ -87,9 +87,7 @@ function UCSBDiningCommonsMenuItemForm({
               id="station"
               type="text"
               isInvalid={Boolean(errors.station)}
-              {...register("station", {
-                required: "Station must be a valid string.",
-              })}
+              {...register("station", {})}
             />
             <Form.Control.Feedback type="invalid">
               {errors.name && "Station is required."}
