@@ -1,6 +1,6 @@
 import React from "react";
 import MenuItemReviewForm from "main/components/MenuItemReview/MenuItemReviewForm";
-import { menuItemReviewFixtures } from "fixtures/menuItemReviewFixtures";
+import { menuItemReviewsFixture } from "fixtures/MenuItemReviewsFixtures";
 
 export default {
   title: "components/MenuItemReview/MenuItemReviewForm",
