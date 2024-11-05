@@ -1,12 +1,12 @@
 const helpRequestsFixtures = {
   oneRequest: {
     id: 1,
-    requesterEmail: "cgaucho@ucsb.edu",
-    teamId: "s22-5pm-3",
-    tableOrBreakoutRoom: "7",
-    requestTime: "2022-04-20T17:35:00",
-    explanation: "Need help with Swagger-ui",
-    solved: false,
+    requesterEmail: "test@ucsb.edu",
+    teamId: "f24-5pm",
+    tableOrBreakoutRoom: "6",
+    requestTime: "2022-01-02T12:00:00",
+    explanation: "explain",
+    solved: "true",
   },
   threeRequests: [
     {
