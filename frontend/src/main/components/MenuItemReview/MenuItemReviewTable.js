@@ -3,9 +3,9 @@ import OurTable, { ButtonColumn } from "main/components/OurTable";
 
 import { useBackendMutation } from "main/utils/useBackend";
 import {
-    cellToAxiosParamsDelete,
-    onDeleteSuccess,
-  } from "main/utils/MenuItemReviewUtils";
+  cellToAxiosParamsDelete,
+  onDeleteSuccess,
+} from "main/utils/MenuItemReviewUtils";
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
@@ -32,28 +32,28 @@ export default function MenuItemReviewsTable({ reviews, currentUser }) {
 
   const columns = [
     {
-        Header: "id",
-        accessor: "id", // accessor is the "key" in the data
+      Header: "id",
+      accessor: "id", // accessor is the "key" in the data
     },
     {
-        Header: "Item Id",
-        accessor: "itemId",
+      Header: "Item Id",
+      accessor: "itemId",
     },
     {
-        Header: "Reviewer Email",
-        accessor: "reviewerEmail",
+      Header: "Reviewer Email",
+      accessor: "reviewerEmail",
     },
     {
-        Header: "Comments",
-        accessor: "comments",
+      Header: "Comments",
+      accessor: "comments",
     },
     {
-        Header: "Stars",
-        accessor: "stars",
+      Header: "Stars",
+      accessor: "stars",
     },
     {
-        Header: "Date Reviewed",
-        accessor: "dateReviewed",
+      Header: "Date Reviewed",
+      accessor: "dateReviewed",
     },
   ];
 
@@ -66,5 +66,11 @@ export default function MenuItemReviewsTable({ reviews, currentUser }) {
     );
   }
 
-  return <OurTable data={reviews} columns={columns} testid={"MenuItemReviewsTable"} />;
+  return (
+    <OurTable
+      data={reviews}
+      columns={columns}
+      testid={"MenuItemReviewsTable"}
+    />
+  );
 }
