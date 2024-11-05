@@ -9,7 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export default function UCSBDatesTable({ dates, currentUser }) {
+export default function RecommendationRequestsTable({ dates, currentUser }) {
   const navigate = useNavigate();
 
   const editCallback = (cell) => {
