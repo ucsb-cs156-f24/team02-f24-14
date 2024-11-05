@@ -1,5 +1,5 @@
 import { render, waitFor, fireEvent, screen } from "@testing-library/react";
-import RecommendationRequestForm from "main/components/RecommendationRequests/RecommendationRequestForm";
+import RecommendationRequestForm from "main/components/RecommendationRequest/RecommendationRequestForm";
 import { recommendationRequestsFixtures } from "fixtures/recommendationRequestsFixtures";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -66,9 +66,7 @@ describe("RecommendationRequestForm tests", () => {
     fireEvent.click(submitButton);
 
     await screen.findByText(/RequesterEmail must be a valid email address/);
-    await screen.findByText(/ProfessorEmail must be valid./);
-    await screen.findByText(/Date needed must be valid./);
-    await screen.findByText(/Date requested must be valid./);
+    await screen.findByText(/ProfessorEmail must be a valid email address/);
   });
 
   test("Correct Error messages on missing input", async () => {

@@ -82,7 +82,7 @@ function RecommendationRequestForm({
             <Form.Control.Feedback type="invalid">
               {errors.professorEmail && "ProfessorEmail is required."}
               {errors.professorEmail?.type === "pattern" &&
-                "Professor email must be valid."}
+                "ProfessorEmail must be a valid email address"}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -102,8 +102,6 @@ function RecommendationRequestForm({
             />
             <Form.Control.Feedback type="invalid">
               {errors.dateNeeded && "Date needed is required."}
-              {errors.dateNeeded?.type === "pattern" &&
-                "Date needed must be valid."}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -123,8 +121,6 @@ function RecommendationRequestForm({
             />
             <Form.Control.Feedback type="invalid">
               {errors.dateRequested && "DateRequested is required."}
-              {errors.dateRequested?.type === "pattern" &&
-                "Date requested must be valid."}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
