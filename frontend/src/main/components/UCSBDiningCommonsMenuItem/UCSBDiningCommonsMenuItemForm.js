@@ -20,8 +20,6 @@ function UCSBDiningCommonsMenuItemForm({
   // For explanation, see: https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime
   // Note that even this complex regex may still need some tweaks
 
-  const email_regex = /\S+@\S+\.\S+/;
-
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
       <Row>
