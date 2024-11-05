@@ -3,7 +3,6 @@ import {
   waitFor,
   fireEvent,
   screen,
-  act,
 } from "@testing-library/react";
 import UCSBDiningCommonsMenuItemForm from "main/components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemForm";
 import { ucsbDiningCommonsMenuItemFixtures } from "fixtures/ucsbDiningCommonsMenuItemFixtures";
@@ -52,9 +51,7 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
       "UCSBDiningCommonsMenuItemForm-submit",
     );
 
-    await act(async () => {
-      fireEvent.click(submitButton);
-    });
+    fireEvent.click(submitButton);
   });
 
   test("Correct Error messages on missing input", async () => {
@@ -68,9 +65,7 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
       "UCSBDiningCommonsMenuItemForm-submit",
     );
 
-    await act(async () => {
-      fireEvent.click(submitButton);
-    });
+    fireEvent.click(submitButton);
 
     await screen.findByText(/Name is required./);
     expect(
@@ -104,18 +99,14 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
     );
 
     // Use act for each interaction to ensure state updates are flushed
-    await act(async () => {
-      fireEvent.change(diningCommonsCodeField, { target: { value: "ortega" } });
-      fireEvent.change(nameField, {
-        target: { value: "Baked Pesto Pasta with Chicken" },
-      });
-      fireEvent.change(stationField, { target: { value: "Entree Specials" } });
+    fireEvent.change(diningCommonsCodeField, { target: { value: "ortega" } });
+    fireEvent.change(nameField, {
+      target: { value: "Baked Pesto Pasta with Chicken" },
     });
+    fireEvent.change(stationField, { target: { value: "Entree Specials" } });
 
     // Click submit and confirm mockSubmitAction is called
-    await act(async () => {
-      fireEvent.click(submitButton);
-    });
+    fireEvent.click(submitButton);
 
     // Explicitly check that mockSubmitAction has been called
     expect(mockSubmitAction).toHaveBeenCalled();
@@ -133,9 +124,7 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
       "UCSBDiningCommonsMenuItemForm-cancel",
     );
 
-    await act(async () => {
-      fireEvent.click(cancelButton);
-    });
+    fireEvent.click(cancelButton);
 
     await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith(-1));
   });
