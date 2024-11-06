@@ -157,6 +157,7 @@ function RecommendationRequestForm({
               isInvalid={Boolean(errors.done)}
               {...register("done")}
             >
+              <open value="">Select...</open>
               <option value="false">False</option>
               <option value="true">True</option>
             </Form.Control>
