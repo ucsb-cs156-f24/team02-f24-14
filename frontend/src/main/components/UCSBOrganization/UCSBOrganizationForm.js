@@ -56,7 +56,9 @@ function UCSBOrganizationForm({
       </Form.Group> */}
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="orgTranslationShort">OrgTranslationShort</Form.Label>
+        <Form.Label htmlFor="orgTranslationShort">
+          OrgTranslationShort
+        </Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-orgTranslationShort"}
           id="orgTranslationShort"
@@ -91,23 +93,22 @@ function UCSBOrganizationForm({
         </Form.Control.Feedback>
       </Form.Group>
 
-
       <Form.Group className="mb-3">
-            <Form.Label htmlFor="inactive">Inactive</Form.Label>
-            <Form.Control
-              data-testid={testIdPrefix + "-inactive"}
-              id="inactive"
-              as="select"
-              isInvalid={Boolean(errors.inactive)}
-              {...register("inactive")}
-            >
-              <option value="false">False</option>
-              <option value="true">True</option>
-            </Form.Control>
-            <Form.Control.Feedback type="inactive">
-              {errors.inactive?.message}
-            </Form.Control.Feedback>
-          </Form.Group>
+        <Form.Label htmlFor="inactive">Inactive</Form.Label>
+        <Form.Control
+          data-testid={testIdPrefix + "-inactive"}
+          id="inactive"
+          as="select"
+          isInvalid={Boolean(errors.inactive)}
+          {...register("inactive")}
+        >
+          <option value="false">False</option>
+          <option value="true">True</option>
+        </Form.Control>
+        <Form.Control.Feedback type="inactive">
+          {errors.inactive?.message}
+        </Form.Control.Feedback>
+      </Form.Group>
 
       <Button type="submit" data-testid={testIdPrefix + "-submit"}>
         {buttonLabel}

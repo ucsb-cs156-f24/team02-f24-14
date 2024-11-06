@@ -23,7 +23,6 @@ Create.args = {
 
 export const Update = Template.bind({});
 
-
 Update.args = {
   initialContents: ucsbOrganizationFixtures.oneOrg[0],
   buttonLabel: "Update",

@@ -16,7 +16,6 @@ jest.mock("react-router-dom", () => ({
 describe("UCSBOrganizationForm tests", () => {
   const queryClient = new QueryClient();
 
-
   const expectedHeaders = ["OrgTranslationShort", "OrgTranslation", "Inactive"];
   const testId = "UCSBOrganizationForm";
 
@@ -42,7 +41,9 @@ describe("UCSBOrganizationForm tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <Router>
-          <UCSBOrganizationForm initialContents={ucsbOrganizationFixtures.oneOrg} />
+          <UCSBOrganizationForm
+            initialContents={ucsbOrganizationFixtures.oneOrg}
+          />
         </Router>
       </QueryClientProvider>,
     );
@@ -56,7 +57,9 @@ describe("UCSBOrganizationForm tests", () => {
 
     expect(await screen.findByTestId(`${testId}-orgCode`)).toBeInTheDocument();
     expect(screen.getByText(/OrgCode/)).toBeInTheDocument();
-    expect(screen.getByTestId(/UCSBOrganizationForm-orgCode/)).toHaveValue("BAL");
+    expect(screen.getByTestId(/UCSBOrganizationForm-orgCode/)).toHaveValue(
+      "BAL",
+    );
   });
 
   test("that navigate(-1) is called when Cancel is clicked", async () => {
@@ -91,16 +94,20 @@ describe("UCSBOrganizationForm tests", () => {
     await screen.findByText(/orgTranslationShort is required/);
     expect(screen.getByText(/orgTranslation is required/)).toBeInTheDocument();
 
-    const orgTranslationShortInput = screen.getByTestId(`${testId}-orgTranslationShort`);
-    fireEvent.change(orgTranslationShortInput, { target: { value: "a".repeat(31) } });
+    const orgTranslationShortInput = screen.getByTestId(
+      `${testId}-orgTranslationShort`,
+    );
+    fireEvent.change(orgTranslationShortInput, {
+      target: { value: "a".repeat(31) },
+    });
 
     const orgTranslationInput = screen.getByTestId(`${testId}-orgTranslation`);
-    fireEvent.change(orgTranslationInput, { target: { value: "a".repeat(39) } });
+    fireEvent.change(orgTranslationInput, {
+      target: { value: "a".repeat(39) },
+    });
 
     const inactiveInput = screen.getByTestId(`${testId}-inactive`);
     fireEvent.change(inactiveInput, { target: { value: false } });
-
-    
 
     const submitButton2 = screen.getByTestId(`${testId}-submit`);
     fireEvent.click(submitButton2);
