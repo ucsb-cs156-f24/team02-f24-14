@@ -251,7 +251,12 @@
 <a name='L186'></a><a href='#L186'>186</a>
 <a name='L187'></a><a href='#L187'>187</a>
 <a name='L188'></a><a href='#L188'>188</a>
-<a name='L189'></a><a href='#L189'>189</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -265,21 +270,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -500,9 +510,9 @@ function RecommendationRequestForm({
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-              {errors.requesterEmail &amp;&amp; "RequesterEmail is required."}
+              {errors.requesterEmail &amp;&amp; "RequesterEmail is required. "}
               {errors.requesterEmail?.type === "pattern" &amp;&amp;
-                "RequesterEmail must be a valid email address"}
+                "RequesterEmail must be a valid email address."}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
@@ -521,7 +531,7 @@ function RecommendationRequestForm({
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-              {errors.professorEmail &amp;&amp; "ProfessorEmail is required."}
+              {errors.professorEmail &amp;&amp; "ProfessorEmail is required. "}
               {errors.professorEmail?.type === "pattern" &amp;&amp;
                 "ProfessorEmail must be a valid email address"}
             &lt;/Form.Control.Feedback&gt;
@@ -530,7 +540,9 @@ function RecommendationRequestForm({
 &nbsp;
         &lt;Col&gt;
           &lt;Form.Group className="mb-3"&gt;
-            &lt;Form.Label htmlFor="dateNeeded"&gt;Date (iso format)&lt;/Form.Label&gt;
+            &lt;Form.Label htmlFor="dateNeeded"&gt;
+              Date Needed (iso format)
+            &lt;/Form.Label&gt;
             &lt;Form.Control
               data-testid="RecommendationRequestForm-dateNeeded"
               id="dateNeeded"
@@ -542,14 +554,16 @@ function RecommendationRequestForm({
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-              {errors.dateNeeded &amp;&amp; "Date needed is required."}
+              {errors.dateNeeded &amp;&amp; "Date needed is required. "}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
 &nbsp;
         &lt;Col&gt;
           &lt;Form.Group className="mb-3"&gt;
-            &lt;Form.Label htmlFor="dateRequested"&gt;Date (iso format)&lt;/Form.Label&gt;
+            &lt;Form.Label htmlFor="dateRequested"&gt;
+              Date Requested (iso format)
+            &lt;/Form.Label&gt;
             &lt;Form.Control
               data-testid="RecommendationRequestForm-dateRequested"
               id="dateRequested"
@@ -561,7 +575,7 @@ function RecommendationRequestForm({
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-              {errors.dateRequested &amp;&amp; "DateRequested is required."}
+              {errors.dateRequested &amp;&amp; "DateRequested is required. "}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
@@ -570,14 +584,14 @@ function RecommendationRequestForm({
       &lt;Row&gt;
         &lt;Col&gt;
           &lt;Form.Group className="mb-3"&gt;
-            &lt;Form.Label htmlFor="explanation"&gt;Name&lt;/Form.Label&gt;
+            &lt;Form.Label htmlFor="explanation"&gt;Explanation&lt;/Form.Label&gt;
             &lt;Form.Control
               data-testid="RecommendationRequestForm-explanation"
               id="explanation"
               type="text"
               isInvalid={Boolean(errors.explanation)}
               {...register("explanation", {
-                required: "Explanation is required.",
+                required: "Explanation is required. ",
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
@@ -598,6 +612,7 @@ function RecommendationRequestForm({
               isInvalid={Boolean(errors.done)}
               {...register("done")}
             &gt;
+              &lt;open value=""&gt;Select...&lt;/open&gt;
               &lt;option value="false"&gt;False&lt;/option&gt;
               &lt;option value="true"&gt;True&lt;/option&gt;
             &lt;/Form.Control&gt;
@@ -634,7 +649,7 @@ export default RecommendationRequestForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-11-06T01:49:58.334Z
+                at 2024-11-06T04:16:04.220Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
