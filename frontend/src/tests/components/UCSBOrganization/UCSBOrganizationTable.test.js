@@ -75,16 +75,16 @@ describe("UCSBOrganizationTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent(
-      "BAL",
-    );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgCode`),
+    ).toHaveTextContent("BAL");
     expect(
       screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`),
     ).toHaveTextContent("Basketball Club");
 
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent(
-      "SOC",
-    );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-orgCode`),
+    ).toHaveTextContent("SOC");
     expect(
       screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`),
     ).toHaveTextContent("Soccer Club");
@@ -129,16 +129,16 @@ describe("UCSBOrganizationTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent(
-      "BAL",
-    );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgCode`),
+    ).toHaveTextContent("BAL");
     expect(
       screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`),
     ).toHaveTextContent("Basketball Club");
 
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent(
-      "SOC",
-    );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-orgCode`),
+    ).toHaveTextContent("SOC");
     expect(
       screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`),
     ).toHaveTextContent("Soccer Club");
