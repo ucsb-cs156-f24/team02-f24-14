@@ -24,14 +24,14 @@ function HelpRequestForm({
   const isodate_regex =
     /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
   // Stryker restore Regex
-
+  const email_regex = /\S@\S+\.\S/;
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
       <Row>
         {initialContents && (
           <Col>
             <Form.Group className="mb-3">
-              <Form.Label htmlFor="id">Id</Form.Label>
+              <Form.Label htmlFor="id">id</Form.Label>
               <Form.Control
                 data-testid="HelpRequestForm-id"
                 id="id"
@@ -53,12 +53,14 @@ function HelpRequestForm({
               type="text"
               isInvalid={Boolean(errors.requesterEmail)}
               {...register("requesterEmail", {
-                required: "Requester's Email is required.",
+                required: true,
                 pattern: email_regex,
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.requesterEmail?.message}
+              {errors.requesterEmail && "Requester's Email is required."}
+              { errors.requesterEmail?.type === "pattern" &&
+                "RequesterEmail must be a valid email address"}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -92,7 +94,7 @@ function HelpRequestForm({
               type="text"
               isInvalid={Boolean(errors.tableOrBreakoutRoom)}
               {...register("tableOrBreakoutRoom", {
-                required: "Table or Breakout Room # is required.",
+                required: "Table or Breakout Room number is required.",
               })}
             />
             <Form.Control.Feedback type="invalid">
@@ -135,7 +137,7 @@ function HelpRequestForm({
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.explanation?.message}
+              {errors.explanation && "Explanation is required."}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -148,15 +150,12 @@ function HelpRequestForm({
               data-testid="HelpRequestForm-solved"
               id="solved"
               isInvalid={Boolean(errors.solved)}
-              {...register("solved", {
-                required: "Solved is required.",
-              })}
+              {...register("solved", {})}
             >
               <option value="true">True</option>
               <option value="false">False</option>
             </Form.Select>
             <Form.Control.Feedback type="invalid">
-              {errors.solved?.message}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>

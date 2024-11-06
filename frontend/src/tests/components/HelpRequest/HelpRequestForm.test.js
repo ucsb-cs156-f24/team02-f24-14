@@ -1,5 +1,5 @@
 import { render, waitFor, fireEvent, screen } from "@testing-library/react";
-import { HelpRequestForm } from "main/components/HelpRequest/HelpRequestForm";
+import HelpRequestForm from "main/components/HelpRequest/HelpRequestForm";
 import { helpRequestsFixtures } from "fixtures/helpRequestsFixtures";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -45,12 +45,17 @@ describe("HelpRequestForm tests", () => {
     );
     await screen.findByTestId("HelpRequestForm-requestTime");
     const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
+    const requesterEmailField = screen.getByTestId("HelpRequestForm-requesterEmail");
+
+
     const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
+    fireEvent.change(requesterEmailField, { target: { value: "bad-input" } });
     fireEvent.change(requestTimeField, { target: { value: "bad-input" } });
     fireEvent.click(submitButton);
 
-    await screen.findByText(/Request Time is required./);
+    await screen.findByText(/RequesterEmail must be a valid email address/);
+    expect(screen.getByText(/Request Time is required./)).toBeInTheDocument();
   });
 
   test("Correct Error messsages on missing input", async () => {
@@ -71,7 +76,6 @@ describe("HelpRequestForm tests", () => {
     ).toBeInTheDocument();
     expect(screen.getByText(/Request Time is required./)).toBeInTheDocument();
     expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
-    expect(screen.getByText(/Solved is required./)).toBeInTheDocument();
   });
 
   test("No Error messsages on good input", async () => {
