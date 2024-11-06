@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -243,8 +243,7 @@
 <a name='L178'></a><a href='#L178'>178</a>
 <a name='L179'></a><a href='#L179'>179</a>
 <a name='L180'></a><a href='#L180'>180</a>
-<a name='L181'></a><a href='#L181'>181</a>
-<a name='L182'></a><a href='#L182'>182</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L181'></a><a href='#L181'>181</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -258,20 +257,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -412,9 +412,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -429,36 +427,36 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 &nbsp;
-function <span class="fstat-no" title="function not covered" >HelpRequestForm(</span>{
+function HelpRequestForm({
   initialContents,
   submitAction,
-  buttonLabel = <span class="branch-0 cbranch-no" title="branch not covered" >"Create",</span>
+  buttonLabel = "Create",
 }) {
   // Stryker disable all
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = <span class="cstat-no" title="statement not covered" >useForm({ defaultValues: initialContents || {} });</span>
+  } = useForm({ defaultValues: initialContents || {} });
   // Stryker restore all
 &nbsp;
-  const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
+  const navigate = useNavigate();
 &nbsp;
   // For explanation, see: https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime
   // Note that even this complex regex may still need some tweaks
 &nbsp;
   // Stryker disable Regex
   const isodate_regex =
-<span class="cstat-no" title="statement not covered" >    /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;</span>
+    /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
   // Stryker restore Regex
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  const email_regex = /\S@\S+\.\S/;
+  return (
     &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
       &lt;Row&gt;
         {initialContents &amp;&amp; (
           &lt;Col&gt;
             &lt;Form.Group className="mb-3"&gt;
-              &lt;Form.Label htmlFor="id"&gt;Id&lt;/Form.Label&gt;
+              &lt;Form.Label htmlFor="id"&gt;id&lt;/Form.Label&gt;
               &lt;Form.Control
                 data-testid="HelpRequestForm-id"
                 id="id"
@@ -480,12 +478,14 @@ function <span class="fstat-no" title="function not covered" >HelpRequestForm(</
               type="text"
               isInvalid={Boolean(errors.requesterEmail)}
               {...register("requesterEmail", {
-                required: "Requester's Email is required.",
+                required: true,
                 pattern: email_regex,
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-              {errors.requesterEmail?.message}
+              {errors.requesterEmail &amp;&amp; "Requester's Email is required."}
+              { errors.requesterEmail?.type === "pattern" &amp;&amp;
+                "RequesterEmail must be a valid email address"}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
@@ -519,7 +519,7 @@ function <span class="fstat-no" title="function not covered" >HelpRequestForm(</
               type="text"
               isInvalid={Boolean(errors.tableOrBreakoutRoom)}
               {...register("tableOrBreakoutRoom", {
-                required: "Table or Breakout Room # is required.",
+                required: "Table or Breakout Room number is required.",
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
@@ -562,7 +562,7 @@ function <span class="fstat-no" title="function not covered" >HelpRequestForm(</
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-              {errors.explanation?.message}
+              {errors.explanation &amp;&amp; "Explanation is required."}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
@@ -575,15 +575,12 @@ function <span class="fstat-no" title="function not covered" >HelpRequestForm(</
               data-testid="HelpRequestForm-solved"
               id="solved"
               isInvalid={Boolean(errors.solved)}
-              {...register("solved", {
-                required: "Solved is required.",
-              })}
+              {...register("solved", {})}
             &gt;
               &lt;option value="true"&gt;True&lt;/option&gt;
               &lt;option value="false"&gt;False&lt;/option&gt;
             &lt;/Form.Select&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-              {errors.solved?.message}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
@@ -595,7 +592,7 @@ function <span class="fstat-no" title="function not covered" >HelpRequestForm(</
           &lt;/Button&gt;
           &lt;Button
             variant="Secondary"
-            onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigate(-1)}</span>
+            onClick={() =&gt; navigate(-1)}
             data-testid="HelpRequestForm-cancel"
           &gt;
             Cancel
@@ -613,7 +610,7 @@ export default HelpRequestForm;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-11-06T02:24:35.232Z
+                at 2024-11-06T02:28:26.985Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
