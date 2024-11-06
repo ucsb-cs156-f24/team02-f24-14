@@ -16,8 +16,8 @@ jest.mock("react-router-dom", () => ({
 describe("UCSBOrganizationForm tests", () => {
   const queryClient = new QueryClient();
 
-  
-  const expectedHeaders = ["OrgCode", "OrgTranslationShort", "OrgTranslation"];
+
+  const expectedHeaders = ["OrgTranslationShort", "OrgTranslation", "Inactive"];
   const testId = "UCSBOrganizationForm";
 
   test("renders correctly with no initialContents", async () => {
@@ -29,6 +29,7 @@ describe("UCSBOrganizationForm tests", () => {
       </QueryClientProvider>,
     );
 
+    expect(await screen.findByText(/OrgTranslationShort/)).toBeInTheDocument();
     expect(await screen.findByText(/Create/)).toBeInTheDocument();
 
     expectedHeaders.forEach((headerText) => {
@@ -55,6 +56,7 @@ describe("UCSBOrganizationForm tests", () => {
 
     expect(await screen.findByTestId(`${testId}-orgCode`)).toBeInTheDocument();
     expect(screen.getByText(/OrgCode/)).toBeInTheDocument();
+    expect(screen.getByTestId(/UCSBOrganizationForm-orgCode/)).toHaveValue("BAL");
   });
 
   test("that navigate(-1) is called when Cancel is clicked", async () => {
@@ -91,7 +93,17 @@ describe("UCSBOrganizationForm tests", () => {
 
     const orgTranslationShortInput = screen.getByTestId(`${testId}-orgTranslationShort`);
     fireEvent.change(orgTranslationShortInput, { target: { value: "a".repeat(31) } });
-    fireEvent.click(submitButton);
+
+    const orgTranslationInput = screen.getByTestId(`${testId}-orgTranslation`);
+    fireEvent.change(orgTranslationInput, { target: { value: "a".repeat(39) } });
+
+    const inactiveInput = screen.getByTestId(`${testId}-inactive`);
+    fireEvent.change(inactiveInput, { target: { value: false } });
+
+    
+
+    const submitButton2 = screen.getByTestId(`${testId}-submit`);
+    fireEvent.click(submitButton2);
 
     await waitFor(() => {
       expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
