@@ -84,7 +84,7 @@ public class ArticleIT {
 
         @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
-        public void an_admin_user_can_post_a_new_restaurant() throws Exception {
+        public void an_admin_user_can_post_a_new_article() throws Exception {
                 // arrange
 
                 LocalDateTime ldt = LocalDateTime.parse("2022-01-03T00:00:00");
