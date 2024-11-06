@@ -1,5 +1,5 @@
 import { render, waitFor, fireEvent, screen } from "@testing-library/react";
-import MenuItemReviewCreatePage from "main/pages/MenuItemReview/MenuItemReviewCreatePage";
+import RecommendationRequestCreatePage from "main/pages/RecommendationRequest/RecommendationRequestCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
@@ -31,7 +31,7 @@ jest.mock("react-router-dom", () => {
   };
 });
 
-describe("MenuItemReviewCreatePage tests", () => {
+describe("RecommendationRequestCreatePage tests", () => {
   const axiosMock = new AxiosMockAdapter(axios);
 
   beforeEach(() => {
@@ -50,67 +50,80 @@ describe("MenuItemReviewCreatePage tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <MenuItemReviewCreatePage />
+          <RecommendationRequestCreatePage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
 
     await waitFor(() => {
       expect(
-        screen.getByTestId("MenuItemReviewForm-itemId"),
+        screen.getByTestId("RecommendationRequestForm-requesterEmail"),
       ).toBeInTheDocument();
     });
   });
 
   test("when you fill in the form and hit submit, it makes a request to the backend", async () => {
     const queryClient = new QueryClient();
-    const menuItemReview = {
-      id: 17,
-      itemId: 2022,
-      reviewerEmail: "test@gmail.com",
-      stars: 5,
-      dateReviewed: "2022-02-02T00:00",
-      comments: "Very good food",
+    const recommendationRequest = {
+      id: 1,
+      requesterEmail: "student@gmail.com",
+      professorEmail: "prof@gmail.com",
+      explanation: "recommend pls",
+      dateRequested: "2022-02-02T00:00",
+      dateNeeded: "2022-02-02T00:00",
+      done: false,
     };
 
-    axiosMock.onPost("/api/menuitemreviews/post").reply(202, menuItemReview);
+    axiosMock
+      .onPost("/api/recommendationrequests/post")
+      .reply(202, recommendationRequest);
 
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <MenuItemReviewCreatePage />
+          <RecommendationRequestCreatePage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
 
     await waitFor(() => {
       expect(
-        screen.getByTestId("MenuItemReviewForm-itemId"),
+        screen.getByTestId("RecommendationRequestForm-requesterEmail"),
       ).toBeInTheDocument();
     });
 
-    const itemIdField = screen.getByTestId("MenuItemReviewForm-itemId");
-    const reviewerEmailField = screen.getByTestId(
-      "MenuItemReviewForm-reviewerEmail",
+    const requesterEmailField = screen.getByTestId(
+      "RecommendationRequestForm-requesterEmail",
     );
-    const starsField = screen.getByTestId("MenuItemReviewForm-stars");
-    const dateReviewedField = screen.getByTestId(
-      "MenuItemReviewForm-dateReviewed",
+    const professorEmailField = screen.getByTestId(
+      "RecommendationRequestForm-professorEmail",
     );
-    const commentsField = screen.getByTestId("MenuItemReviewForm-comments");
-    const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
+    const explanationField = screen.getByTestId(
+      "RecommendationRequestForm-explanation",
+    );
+    const dateRequestedField = screen.getByTestId(
+      "RecommendationRequestForm-dateRequested",
+    );
+    const dateNeededField = screen.getByTestId(
+      "RecommendationRequestForm-dateNeeded",
+    );
+    const doneField = screen.getByTestId("RecommendationRequestForm-done");
+    const submitButton = screen.getByTestId("RecommendationRequestForm-submit");
 
-    fireEvent.change(itemIdField, { target: { value: "2022" } });
-    fireEvent.change(reviewerEmailField, {
-      target: { value: "test@gmail.com" },
+    fireEvent.change(requesterEmailField, {
+      target: { value: "student@gmail.com" },
     });
-    fireEvent.change(starsField, { target: { value: "5" } });
-    fireEvent.change(dateReviewedField, {
+    fireEvent.change(professorEmailField, {
+      target: { value: "prof@gmail.com" },
+    });
+    fireEvent.change(explanationField, { target: { value: "recommend pls" } });
+    fireEvent.change(dateRequestedField, {
       target: { value: "2022-02-02T00:00" },
     });
-    fireEvent.change(commentsField, {
-      target: { value: "Very good food" },
+    fireEvent.change(dateNeededField, {
+      target: { value: "2022-02-02T00:00" },
     });
+    fireEvent.change(doneField, { target: { value: false } });
 
     expect(submitButton).toBeInTheDocument();
 
@@ -119,16 +132,17 @@ describe("MenuItemReviewCreatePage tests", () => {
     await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
     expect(axiosMock.history.post[0].params).toEqual({
-      dateReviewed: "2022-02-02T00:00",
-      comments: "Very good food",
-      itemId: "2022",
-      reviewerEmail: "test@gmail.com",
-      stars: "5",
+      requesterEmail: "student@gmail.com",
+      professorEmail: "prof@gmail.com",
+      explanation: "recommend pls",
+      dateRequested: "2022-02-02T00:00",
+      dateNeeded: "2022-02-02T00:00",
+      done: "false",
     });
 
     expect(mockToast).toBeCalledWith(
-      "New menuItemReview Created - id: 17 itemId: 2022",
+      "New recommendationRequest Created - id: 1 requester: student@gmail.com",
     );
-    expect(mockNavigate).toBeCalledWith({ to: "/menuitemreviews" });
+    expect(mockNavigate).toBeCalledWith({ to: "/recommendationrequests" });
   });
 });

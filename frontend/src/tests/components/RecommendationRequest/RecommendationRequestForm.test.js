@@ -134,7 +134,7 @@ describe("RecommendationRequestForm tests", () => {
     await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
     expect(
-      screen.queryByText(/RequesterEmail must be a valid email address/),
+      screen.queryByText(/RequesterEmail must be a valid email address./),
     ).not.toBeInTheDocument();
     expect(
       screen.queryByText(/ProfessorEmail must be a valid email address/),

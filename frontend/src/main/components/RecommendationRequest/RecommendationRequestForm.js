@@ -59,9 +59,9 @@ function RecommendationRequestForm({
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.requesterEmail && "RequesterEmail is required."}
+              {errors.requesterEmail && "RequesterEmail is required. "}
               {errors.requesterEmail?.type === "pattern" &&
-                "RequesterEmail must be a valid email address"}
+                "RequesterEmail must be a valid email address."}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -80,7 +80,7 @@ function RecommendationRequestForm({
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.professorEmail && "ProfessorEmail is required."}
+              {errors.professorEmail && "ProfessorEmail is required. "}
               {errors.professorEmail?.type === "pattern" &&
                 "ProfessorEmail must be a valid email address"}
             </Form.Control.Feedback>
@@ -89,7 +89,9 @@ function RecommendationRequestForm({
 
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="dateNeeded">Date (iso format)</Form.Label>
+            <Form.Label htmlFor="dateNeeded">
+              Date Needed (iso format)
+            </Form.Label>
             <Form.Control
               data-testid="RecommendationRequestForm-dateNeeded"
               id="dateNeeded"
@@ -101,14 +103,16 @@ function RecommendationRequestForm({
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.dateNeeded && "Date needed is required."}
+              {errors.dateNeeded && "Date needed is required. "}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
 
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="dateRequested">Date (iso format)</Form.Label>
+            <Form.Label htmlFor="dateRequested">
+              Date Requested (iso format)
+            </Form.Label>
             <Form.Control
               data-testid="RecommendationRequestForm-dateRequested"
               id="dateRequested"
@@ -120,7 +124,7 @@ function RecommendationRequestForm({
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.dateRequested && "DateRequested is required."}
+              {errors.dateRequested && "DateRequested is required. "}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -129,14 +133,14 @@ function RecommendationRequestForm({
       <Row>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="explanation">Name</Form.Label>
+            <Form.Label htmlFor="explanation">Explanation</Form.Label>
             <Form.Control
               data-testid="RecommendationRequestForm-explanation"
               id="explanation"
               type="text"
               isInvalid={Boolean(errors.explanation)}
               {...register("explanation", {
-                required: "Explanation is required.",
+                required: "Explanation is required. ",
               })}
             />
             <Form.Control.Feedback type="invalid">
@@ -157,6 +161,7 @@ function RecommendationRequestForm({
               isInvalid={Boolean(errors.done)}
               {...register("done")}
             >
+              <open value="">Select...</open>
               <option value="false">False</option>
               <option value="true">True</option>
             </Form.Control>
