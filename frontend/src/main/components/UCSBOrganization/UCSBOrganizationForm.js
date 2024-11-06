@@ -91,6 +91,7 @@ function UCSBOrganizationForm({
         </Form.Control.Feedback>
       </Form.Group>
 
+
       <Form.Group className="mb-3">
             <Form.Label htmlFor="inactive">Inactive</Form.Label>
             <Form.Control
