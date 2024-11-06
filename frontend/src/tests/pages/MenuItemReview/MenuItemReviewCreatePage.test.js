@@ -1,5 +1,5 @@
 import { render, waitFor, fireEvent, screen } from "@testing-library/react";
-import ArticlesCreatePage from "main/pages/Articles/ArticlesCreatePage";
+import MenuItemReviewCreatePage from "main/pages/MenuItemReview/MenuItemReviewCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
@@ -31,7 +31,7 @@ jest.mock("react-router-dom", () => {
   };
 });
 
-describe("ArticlesCreatePage tests", () => {
+describe("MenuItemReviewCreatePage tests", () => {
   const axiosMock = new AxiosMockAdapter(axios);
 
   beforeEach(() => {
@@ -50,55 +50,67 @@ describe("ArticlesCreatePage tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <ArticlesCreatePage />
+          <MenuItemReviewCreatePage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
 
     await waitFor(() => {
-      expect(screen.getByTestId("ArticlesForm-title")).toBeInTheDocument();
+      expect(
+        screen.getByTestId("MenuItemReviewForm-itemId"),
+      ).toBeInTheDocument();
     });
   });
 
   test("when you fill in the form and hit submit, it makes a request to the backend", async () => {
     const queryClient = new QueryClient();
-    const article = {
-      id: 1,
-      title: "Article One",
-      url: "article-ones-url",
-      explanation: "A very long explanation about article one.",
-      email: "article@email.com",
-      dateAdded: "2022-01-02T12:00",
+    const menuItemReview = {
+      id: 17,
+      itemId: 2022,
+      reviewerEmail: "test@gmail.com",
+      stars: 5,
+      dateReviewed: "2022-02-02T00:00",
+      comments: "Very good food",
     };
 
-    axiosMock.onPost("/api/articles/post").reply(202, article);
+    axiosMock.onPost("/api/menuitemreviews/post").reply(202, menuItemReview);
 
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <ArticlesCreatePage />
+          <MenuItemReviewCreatePage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
 
     await waitFor(() => {
-      expect(screen.getByTestId("ArticlesForm-title")).toBeInTheDocument();
+      expect(
+        screen.getByTestId("MenuItemReviewForm-itemId"),
+      ).toBeInTheDocument();
     });
 
-    const titleField = screen.getByTestId("ArticlesForm-title");
-    const urlField = screen.getByTestId("ArticlesForm-url");
-    const explanationField = screen.getByTestId("ArticlesForm-explanation");
-    const emailField = screen.getByTestId("ArticlesForm-email");
-    const dateAddedField = screen.getByTestId("ArticlesForm-dateAdded");
-    const submitButton = screen.getByTestId("ArticlesForm-submit");
+    const itemIdField = screen.getByTestId("MenuItemReviewForm-itemId");
+    const reviewerEmailField = screen.getByTestId(
+      "MenuItemReviewForm-reviewerEmail",
+    );
+    const starsField = screen.getByTestId("MenuItemReviewForm-stars");
+    const dateReviewedField = screen.getByTestId(
+      "MenuItemReviewForm-dateReviewed",
+    );
+    const commentsField = screen.getByTestId("MenuItemReviewForm-comments");
+    const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
 
-    fireEvent.change(titleField, { target: { value: "Article One" } });
-    fireEvent.change(urlField, { target: { value: "article-ones-url" } });
-    fireEvent.change(explanationField, {
-      target: { value: "A very long explanation about article one." },
+    fireEvent.change(itemIdField, { target: { value: "2022" } });
+    fireEvent.change(reviewerEmailField, {
+      target: { value: "test@gmail.com" },
     });
-    fireEvent.change(emailField, { target: { value: "article@email.com" } });
-    fireEvent.change(dateAddedField, { target: { value: "2022-01-02T12:00" } });
+    fireEvent.change(starsField, { target: { value: "5" } });
+    fireEvent.change(dateReviewedField, {
+      target: { value: "2022-02-02T00:00" },
+    });
+    fireEvent.change(commentsField, {
+      target: { value: "Very good food" },
+    });
 
     expect(submitButton).toBeInTheDocument();
 
@@ -107,16 +119,16 @@ describe("ArticlesCreatePage tests", () => {
     await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
     expect(axiosMock.history.post[0].params).toEqual({
-      title: "Article One",
-      url: "article-ones-url",
-      explanation: "A very long explanation about article one.",
-      email: "article@email.com",
-      dateAdded: "2022-01-02T12:00",
+      dateReviewed: "2022-02-02T00:00",
+      comments: "Very good food",
+      itemId: "2022",
+      reviewerEmail: "test@gmail.com",
+      stars: "5",
     });
 
     expect(mockToast).toBeCalledWith(
-      "New article Created - id: 1 title: Article One",
+      "New menuItemReview Created - id: 17 itemId: 2022",
     );
-    expect(mockNavigate).toBeCalledWith({ to: "/articles" });
+    expect(mockNavigate).toBeCalledWith({ to: "/menuitemreviews" });
   });
 });
