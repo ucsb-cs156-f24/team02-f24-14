@@ -46,7 +46,9 @@ function HelpRequestForm({
 
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="requesterEmail">Help Requester Email</Form.Label>
+            <Form.Label htmlFor="requesterEmail">
+              Help Requester Email
+            </Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-requesterEmail"
               id="requesterEmail"
@@ -59,7 +61,7 @@ function HelpRequestForm({
             />
             <Form.Control.Feedback type="invalid">
               {errors.requesterEmail && "Requester's Email is required."}
-              { errors.requesterEmail?.type === "pattern" &&
+              {errors.requesterEmail?.type === "pattern" &&
                 "RequesterEmail must be a valid email address"}
             </Form.Control.Feedback>
           </Form.Group>
@@ -86,7 +88,7 @@ function HelpRequestForm({
         <Col>
           <Form.Group className="mb-3">
             <Form.Label htmlFor="tableOrBreakoutRoom">
-              Table or Breakout Room number 
+              Table or Breakout Room number
             </Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-tableOrBreakoutRoom"
@@ -155,8 +157,7 @@ function HelpRequestForm({
               <option value="true">True</option>
               <option value="false">False</option>
             </Form.Select>
-            <Form.Control.Feedback type="invalid">
-            </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
           </Form.Group>
         </Col>
       </Row>

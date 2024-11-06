@@ -45,8 +45,9 @@ describe("HelpRequestForm tests", () => {
     );
     await screen.findByTestId("HelpRequestForm-requestTime");
     const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
-    const requesterEmailField = screen.getByTestId("HelpRequestForm-requesterEmail");
-
+    const requesterEmailField = screen.getByTestId(
+      "HelpRequestForm-requesterEmail",
+    );
 
     const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
