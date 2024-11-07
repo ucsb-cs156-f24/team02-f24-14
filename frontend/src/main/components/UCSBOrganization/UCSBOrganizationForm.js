@@ -35,7 +35,8 @@ function UCSBOrganizationForm({
         </Form.Group>
       )}
 
-      {/* <Form.Group className="mb-3">
+      {!initialContents && (
+      <Form.Group className="mb-3">
         <Form.Label htmlFor="orgCode">OrgCode</Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-orgCode"}
@@ -53,7 +54,8 @@ function UCSBOrganizationForm({
         <Form.Control.Feedback type="invalid">
           {errors.orgCode?.message}
         </Form.Control.Feedback>
-      </Form.Group> */}
+      </Form.Group>
+      )}
 
       <Form.Group className="mb-3">
         <Form.Label htmlFor="orgTranslationShort">
