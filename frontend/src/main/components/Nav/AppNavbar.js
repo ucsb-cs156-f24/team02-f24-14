@@ -58,6 +58,13 @@ export default function AppNavbar({
                   <NavDropdown.Item href="/admin/users">Users</NavDropdown.Item>
                 </NavDropdown>
               )}
+              {
+              hasRole(currentUser, "ROLE_USER") && (
+                <>
+                  <Nav.Link as={NavLink} to="/ucsborganization">UCSBOrganization</Nav.Link>
+                </>
+              )
+              }
               {currentUser && currentUser.loggedIn ? (
                 <>
                   <Nav.Link as={Link} to="/restaurants">
