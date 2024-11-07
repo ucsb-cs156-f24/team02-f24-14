@@ -3,14 +3,14 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { http, HttpResponse } from "msw";
 
-import UCSBDatesCreatePage from "main/pages/UCSBDates/UCSBDatesCreatePage";
+import UCSBDiningCommonsMenuItemCreatePage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemCreatePage";
 
 export default {
-  title: "pages/UCSBDates/UCSBDatesCreatePage",
-  component: UCSBDatesCreatePage,
+  title: "pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemCreatePage",
+  component: UCSBDiningCommonsMenuItemCreatePage,
 };
 
-const Template = () => <UCSBDatesCreatePage storybook={true} />;
+const Template = () => <UCSBDiningCommonsMenuItemCreatePage storybook={true} />;
 
 export const Default = Template.bind({});
 Default.parameters = {
@@ -25,7 +25,7 @@ Default.parameters = {
         status: 200,
       });
     }),
-    http.post("/api/ucsbdates/post", () => {
+    http.post("/api/ucsbdiningcommonsmenuitem/post", () => {
       return HttpResponse.json({}, { status: 200 });
     }),
   ],
