@@ -14,6 +14,7 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockedNavigate,
 }));
 
+
 describe("UCSBOrganizationTable tests", () => {
   const queryClient = new QueryClient();
 
