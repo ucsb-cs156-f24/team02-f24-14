@@ -1,4 +1,5 @@
 import React from "react";
+
 import UCSBDiningCommonsMenuItem from "main/components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemForm";
 import { ucsbDiningCommonsMenuItemFixtures } from "fixtures/ucsbDiningCommonsMenuItemFixtures";
 
