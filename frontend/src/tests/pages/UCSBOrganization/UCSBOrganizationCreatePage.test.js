@@ -85,8 +85,9 @@ describe("UCSBOrganizationCreatePage tests", () => {
       expect(screen.getByLabelText("OrgTranslationShort")).toBeInTheDocument();
     });
 
-    const codeInput = screen.getByLabelText("OrgCode");
-    expect(codeInput).toBeInTheDocument();
+    const codeInput = screen.getByLabelText("OrgCode"); //This should not be here but I don't know what the createPage
+    expect(codeInput).toBeInTheDocument(); //tests should look like without the ability to
+    //create your own orgCode since it can't leave orgCode blank
 
     const nameInput = screen.getByLabelText("OrgTranslationShort");
     expect(nameInput).toBeInTheDocument();

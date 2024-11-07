@@ -35,25 +35,41 @@ function UCSBOrganizationForm({
         </Form.Group>
       )}
 
-      <Form.Group className="mb-3">
-        <Form.Label htmlFor="orgCode">OrgCode</Form.Label>
-        <Form.Control
-          data-testid={testIdPrefix + "-orgCode"}
-          id="orgCode"
-          type="text"
-          isInvalid={Boolean(errors.orgCode)}
-          {...register("orgCode", {
-            required: "orgCode is required.",
-            maxLength: {
-              value: 3,
-              message: "Max length 3 characters",
-            },
-          })}
-        />
-        <Form.Control.Feedback type="invalid">
-          {errors.orgCode?.message}
-        </Form.Control.Feedback>
-      </Form.Group>
+      {/* {!initialContents && (
+        <Form.Group className="mb-3">
+          <Form.Label htmlFor="orgCode">OrgCode</Form.Label>
+          <Form.Control
+            data-testid={testIdPrefix + "-orgCode"}
+            id="orgCode"
+            type="text"
+            {...register("orgCode")}
+            value={initialContents.orgCode}
+            disabled
+          />
+        </Form.Group>
+      )} */}
+
+      {!initialContents && (
+        <Form.Group className="mb-3">
+          <Form.Label htmlFor="orgCode">OrgCode</Form.Label>
+          <Form.Control
+            data-testid={testIdPrefix + "-orgCode"}
+            id="orgCode"
+            type="text"
+            isInvalid={Boolean(errors.orgCode)}
+            {...register("orgCode", {
+              required: "orgCode is required.",
+              maxLength: {
+                value: 3,
+                message: "Max length 3 characters",
+              },
+            })}
+          />
+          <Form.Control.Feedback type="invalid">
+            {errors.orgCode?.message}
+          </Form.Control.Feedback>
+        </Form.Group>
+      )}
 
       <Form.Group className="mb-3">
         <Form.Label htmlFor="orgTranslationShort">
