@@ -32,7 +32,7 @@ describe("UCSBOrganizationEditPage tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <PlaceholderEditPage />
+          <UCSBOrganizationEditPage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
