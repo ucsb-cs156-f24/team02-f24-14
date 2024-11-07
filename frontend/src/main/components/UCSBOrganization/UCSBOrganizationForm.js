@@ -35,7 +35,6 @@ function UCSBOrganizationForm({
         </Form.Group>
       )}
 
-      {!initialContents && (
       <Form.Group className="mb-3">
         <Form.Label htmlFor="orgCode">OrgCode</Form.Label>
         <Form.Control
@@ -46,8 +45,8 @@ function UCSBOrganizationForm({
           {...register("orgCode", {
             required: "orgCode is required.",
             maxLength: {
-              value: 30,
-              message: "Max length 10 characters",
+              value: 3,
+              message: "Max length 3 characters",
             },
           })}
         />
@@ -55,7 +54,6 @@ function UCSBOrganizationForm({
           {errors.orgCode?.message}
         </Form.Control.Feedback>
       </Form.Group>
-      )}
 
       <Form.Group className="mb-3">
         <Form.Label htmlFor="orgTranslationShort">
