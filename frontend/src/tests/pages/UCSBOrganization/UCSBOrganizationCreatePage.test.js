@@ -85,6 +85,8 @@ describe("UCSBOrganizationCreatePage tests", () => {
       expect(screen.getByLabelText("OrgTranslationShort")).toBeInTheDocument();
     });
 
+
+    //doesn't work because backend requires orgcode to create organization <----------- !!!!!!!!
     //const codeInput = screen.getByLabelText("OrgCode"); //This should not be here but I don't know what the createPage
     //expect(codeInput).toBeInTheDocument(); //tests should look like without the ability to
     //create your own orgCode since it can't leave orgCode blank
