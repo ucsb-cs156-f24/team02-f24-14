@@ -30,22 +30,22 @@ public class RecommendationRequestWebIT extends WebTestCase {
         page.getByTestId("RecommendationRequestForm-explanation").fill("explanation");
         page.getByTestId("RecommendationRequestForm-dateRequested").fill("2021-06-01T00:00");
         page.getByTestId("RecommendationRequestForm-dateNeeded").fill("2021-06-01T00:00");
-        page.getByTestId("RecommendationRequestForm-done").fill("true");
+        page.getByTestId("RecommendationRequestForm-done").selectOption("true");
         page.getByTestId("RecommendationRequestForm-submit").click();
 
-        assertThat(page.getByTestId("RecommendationRequestTable-cell-row-0-col-requesterEmail"))
+        assertThat(page.getByTestId("RecommendationRequestsTable-cell-row-0-col-requesterEmail"))
                 .hasText("student@ucsb.edu");
 
-        page.getByTestId("RecommendationRequestTable-cell-row-0-col-Edit-button").click();
+        page.getByTestId("RecommendationRequestsTable-cell-row-0-col-Edit-button").click();
         assertThat(page.getByText("Edit RecommendationRequest")).isVisible();
         page.getByTestId("RecommendationRequestForm-requesterEmail").fill("oviya@gmail.com");
         page.getByTestId("RecommendationRequestForm-submit").click();
 
-        assertThat(page.getByTestId("RecommendationRequestTable-cell-row-0-col-requesterEmail")).hasText("oviya@gmail.com");
+        assertThat(page.getByTestId("RecommendationRequestsTable-cell-row-0-col-requesterEmail")).hasText("oviya@gmail.com");
 
-        page.getByTestId("RecommendationRequestTable-cell-row-0-col-Delete-button").click();
+        page.getByTestId("RecommendationRequestsTable-cell-row-0-col-Delete-button").click();
 
-        assertThat(page.getByTestId("RecommendationRequestTable-cell-row-0-col-requesterEmail")).not().isVisible();
+        assertThat(page.getByTestId("RecommendationRequestsTable-cell-row-0-col-requesterEmail")).not().isVisible();
     }
 
     @Test
@@ -55,6 +55,6 @@ public class RecommendationRequestWebIT extends WebTestCase {
         page.getByText("Recommendation Requests").click();
 
         assertThat(page.getByText("Create RecommendationRequest")).not().isVisible();
-        assertThat(page.getByTestId("RecommendationRequestTable-cell-row-0-col-requesterEmail")).not().isVisible();
+        assertThat(page.getByTestId("RecommendationRequestsTable-cell-row-0-col-requesterEmail")).not().isVisible();
     }
 }
