@@ -16,7 +16,12 @@ jest.mock("react-router-dom", () => ({
 describe("UCSBOrganizationForm tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["OrgCode", "OrgTranslationShort", "OrgTranslation", "Inactive"];
+  const expectedHeaders = [
+    "OrgCode",
+    "OrgTranslationShort",
+    "OrgTranslation",
+    "Inactive",
+  ];
   const testId = "UCSBOrganizationForm";
 
   test("renders correctly with no initialContents", async () => {
@@ -35,17 +40,22 @@ describe("UCSBOrganizationForm tests", () => {
       expect(header).toBeInTheDocument();
     });
     expect(await screen.findByTestId(`${testId}-orgCode`)).toBeInTheDocument();
-    expect(await screen.findByTestId(`${testId}-orgTranslationShort`)).toBeInTheDocument();
-    expect(await screen.findByTestId(`${testId}-orgTranslation`)).toBeInTheDocument();
+    expect(
+      await screen.findByTestId(`${testId}-orgTranslationShort`),
+    ).toBeInTheDocument();
+    expect(
+      await screen.findByTestId(`${testId}-orgTranslation`),
+    ).toBeInTheDocument();
     expect(await screen.findByTestId(`${testId}-inactive`)).toBeInTheDocument();
-
   });
 
   test("renders correctly when passing in initialContents", async () => {
     render(
       <QueryClientProvider client={queryClient}>
         <Router>
-          <UCSBOrganizationForm initialContents={ucsbOrganizationFixtures.oneOrg} />
+          <UCSBOrganizationForm
+            initialContents={ucsbOrganizationFixtures.oneOrg}
+          />
         </Router>
       </QueryClientProvider>,
     );
@@ -101,11 +111,17 @@ describe("UCSBOrganizationForm tests", () => {
     fireEvent.click(submitButton);
 
     await screen.findByText(/orgCode is required/);
-    expect(screen.getByText(/orgTranslationShort is required/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/orgTranslationShort is required/),
+    ).toBeInTheDocument();
     expect(screen.getByText(/orgTranslation is required/)).toBeInTheDocument();
 
-    const orgTranslationShortInput = screen.getByTestId(`${testId}-orgTranslationShort`);
-    fireEvent.change(orgTranslationShortInput, { target: { value: "a".repeat(31) } });
+    const orgTranslationShortInput = screen.getByTestId(
+      `${testId}-orgTranslationShort`,
+    );
+    fireEvent.change(orgTranslationShortInput, {
+      target: { value: "a".repeat(31) },
+    });
     fireEvent.click(submitButton);
 
     await waitFor(() => {
