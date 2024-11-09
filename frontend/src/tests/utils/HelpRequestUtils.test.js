@@ -42,7 +42,7 @@ describe("helpRequestUtils", () => {
 
       // assert
       expect(result).toEqual({
-        url: "/api/helprequests",
+        url: "/api/HelpRequests",
         method: "DELETE",
         params: { id: 17 },
       });

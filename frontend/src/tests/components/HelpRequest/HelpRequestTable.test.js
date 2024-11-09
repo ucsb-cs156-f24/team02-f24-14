@@ -49,7 +49,7 @@ describe("UserTable tests", () => {
       "explanation",
       "solved",
     ];
-    const testId = "HelpRequestsTable";
+    const testId = "HelpRequestTable";
 
     expectedHeaders.forEach((headerText) => {
       const header = screen.getByText(headerText);
@@ -111,7 +111,7 @@ describe("UserTable tests", () => {
       "explanation",
       "solved",
     ];
-    const testId = "HelpRequestsTable";
+    const testId = "HelpRequestTable";
 
     expectedHeaders.forEach((headerText) => {
       const header = screen.getByText(headerText);
@@ -159,12 +159,12 @@ describe("UserTable tests", () => {
 
     await waitFor(() => {
       expect(
-        screen.getByTestId(`HelpRequestsTable-cell-row-0-col-id`),
+        screen.getByTestId(`HelpRequestTable-cell-row-0-col-id`),
       ).toHaveTextContent("1");
     });
 
     const editButton = screen.getByTestId(
-      `HelpRequestsTable-cell-row-0-col-Edit-button`,
+      `HelpRequestTable-cell-row-0-col-Edit-button`,
     );
     expect(editButton).toBeInTheDocument();
 
@@ -181,7 +181,7 @@ describe("UserTable tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
     axiosMock
-      .onDelete("/api/helprequests")
+      .onDelete("/api/HelpRequests")
       .reply(200, { message: "Help Request deleted" });
 
     // act - render the component
@@ -200,12 +200,12 @@ describe("UserTable tests", () => {
 
     await waitFor(() => {
       expect(
-        screen.getByTestId(`HelpRequestsTable-cell-row-0-col-id`),
+        screen.getByTestId(`HelpRequestTable-cell-row-0-col-id`),
       ).toHaveTextContent("1");
     });
 
     const deleteButton = screen.getByTestId(
-      `HelpRequestsTable-cell-row-0-col-Delete-button`,
+      `HelpRequestTable-cell-row-0-col-Delete-button`,
     );
     expect(deleteButton).toBeInTheDocument();
 
