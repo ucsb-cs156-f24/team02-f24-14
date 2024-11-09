@@ -27,28 +27,17 @@ export default function AppNavbar({
           <Navbar.Brand as={Link} to="/">
             Example
           </Navbar.Brand>
-
           <Navbar.Toggle />
-
           <Nav className="me-auto">
             {systemInfo?.springH2ConsoleEnabled && (
-              <>
-                <Nav.Link href="/h2-console">H2Console</Nav.Link>
-              </>
+              <Nav.Link href="/h2-console">H2Console</Nav.Link>
             )}
             {systemInfo?.showSwaggerUILink && (
-              <>
-                <Nav.Link href="/swagger-ui/index.html">Swagger</Nav.Link>
-              </>
+              <Nav.Link href="/swagger-ui/index.html">Swagger</Nav.Link>
             )}
           </Nav>
-
-          <>
-            {/* be sure that each NavDropdown has a unique id and data-testid  */}
-          </>
-
           <Navbar.Collapse className="justify-content-between">
-            <Nav className="mr-auto">
+            <Nav className="me-auto">
               {hasRole(currentUser, "ROLE_ADMIN") && (
                 <NavDropdown
                   title="Admin"
@@ -66,18 +55,29 @@ export default function AppNavbar({
                   <Nav.Link as={Link} to="/helprequests">
                     Help Requests
                   </Nav.Link>
+                  <Nav.Link as={Link} to="/articles">
+                    Articles
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/menuitemreviews">
+                    MenuItemReview
+                  </Nav.Link>
                   <Nav.Link as={Link} to="/ucsbdates">
                     UCSB Dates
                   </Nav.Link>
+                  <Nav.Link as={Link} to="/recommendationrequests">
+                    Recommendation Requests
+                  </Nav.Link>
                   <Nav.Link as={Link} to="/placeholder">
                     Placeholder
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/ucsbdiningcommonsmenuitem">
+                    UCSBDiningCommonsMenuItem
                   </Nav.Link>
                 </>
               ) : (
                 <></>
               )}
             </Nav>
-
             <Nav className="ml-auto">
               {currentUser && currentUser.loggedIn ? (
                 <>
