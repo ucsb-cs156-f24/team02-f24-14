@@ -163,7 +163,7 @@ describe("UCSBOrganizationTable tests", () => {
     ).toHaveTextContent("UCSB Soccer Club");
     expect(
       screen.getByTestId(`${testId}-cell-row-1-col-inactive`),
-    ).toHaveTextContent("False");
+    ).toHaveTextContent("True");
 
     expect(screen.queryByText("Delete")).not.toBeInTheDocument();
     expect(screen.queryByText("Edit")).not.toBeInTheDocument();

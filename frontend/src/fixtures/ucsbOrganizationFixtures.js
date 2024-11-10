@@ -16,7 +16,7 @@ const ucsbOrganizationFixtures = {
       orgCode: "SOC",
       orgTranslationShort: "Soccer Club",
       orgTranslation: "UCSB Soccer Club",
-      inactive: false,
+      inactive: true,
     },
     {
       orgCode: "CHE",
