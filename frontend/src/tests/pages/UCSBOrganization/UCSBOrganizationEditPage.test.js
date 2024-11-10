@@ -48,7 +48,9 @@ describe("UCSBOrganizationEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/ucsborganization", { params: { id: "BLL" } }).timeout();
+      axiosMock
+        .onGet("/api/ucsborganization", { params: { orgCode: "BLL" } })
+        .timeout();
     });
 
     const queryClient = new QueryClient();
@@ -62,8 +64,10 @@ describe("UCSBOrganizationEditPage tests", () => {
           </MemoryRouter>
         </QueryClientProvider>,
       );
-      //await screen.findByText("Update");
-      expect(screen.queryByTestId("UCSBOrganizationForm-orgCode")).not.toBeInTheDocument();
+      await screen.findByText("Edit UCSBOrganization");
+      expect(
+        screen.queryByTestId("UCSBOrganizationForm-orgCode"),
+      ).not.toBeInTheDocument();
       restoreConsole();
     });
   });
@@ -80,16 +84,18 @@ describe("UCSBOrganizationEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/ucsbOrganization", { params: { id: "BAL" } }).reply(200, {
+      axiosMock
+        .onGet("/api/ucsborganization", { params: { orgCode: "BAL" } })
+        .reply(200, {
           orgCode: "BAL",
           orgTranslationShort: "Basketball Club",
-          orgTranslatino: "UCSB Basketball Club",
+          orgTranslation: "UCSB Basketball Club",
           inactive: "false",
         });
       axiosMock.onPut("/api/ucsborganization").reply(200, {
         orgCode: "BAL",
-        orgTranslationShort: "Basketball Club",
-        orgTranslatino: "UCSB Basketball Club",
+        orgTranslationShort: "New Basketball Club",
+        orgTranslation: "New UCSB Basketball Club",
         inactive: "false",
       });
     });
@@ -105,23 +111,26 @@ describe("UCSBOrganizationEditPage tests", () => {
         </QueryClientProvider>,
       );
 
-      // await screen.findByTestId("UCSBOrganizationForm-orgCode");
+      await screen.findByTestId("UCSBOrganizationForm-orgCode");
 
-      // const orgCodeField = screen.getByTestId("UCSBOrganizationForm-orgCode");
-      // const orgTranslationShortField = screen.getByTestId("UCSBOrganizationForm-OrgTranslationShort");
-      // const orgTranslationField= screen.getByTestId("UCSBOrganizationForm-OrgTranslation");
-      // const inactiveField = screen.getByTestId("UCSBOrganizationForm-Inactive");
-      // const submitButton = screen.getByTestId("UCSBOrganizationForm-submit");
-      //await screen.findByLabelText("OrgCode");
-      await waitFor(() => {
-        expect(screen.getByLabelText("OrgTranslationShort")).toBeInTheDocument();
-      });
-      const orgCodeField = screen.getByLabelText("OrgCode");
-      const orgTranslationShortField = screen.getByLabelText("OrgTranslationShort");
-      const orgTranslationField = screen.getByLabelText("OrgTranslation");
-      const inactiveField = screen.getByLabelText("Inactive");
+      const orgCodeField = screen.getByTestId("UCSBOrganizationForm-orgCode");
+      const orgTranslationShortField = screen.getByTestId(
+        "UCSBOrganizationForm-orgTranslationShort",
+      );
+      const orgTranslationField = screen.getByTestId(
+        "UCSBOrganizationForm-orgTranslation",
+      );
+      const inactiveField = screen.getByTestId("UCSBOrganizationForm-inactive");
       const submitButton = screen.getByTestId("UCSBOrganizationForm-submit");
-
+      //await screen.findByLabelText("OrgCode");
+      // await waitFor(() => {
+      //   expect(screen.findByTestId("UCSBOrganizationForm-orgCode")).toBeInTheDocument();
+      // });
+      // const orgCodeField = screen.getByLabelText("OrgCode");
+      // const orgTranslationShortField = screen.getByLabelText("OrgTranslationShort");
+      // const orgTranslationField = screen.getByLabelText("OrgTranslation");
+      // const inactiveField = screen.getByLabelText("Inactive");
+      // const submitButton = screen.getByTestId("UCSBOrganizationForm-submit");
 
       expect(orgCodeField).toBeInTheDocument();
       expect(orgCodeField).toHaveValue("BAL");
@@ -142,18 +151,18 @@ describe("UCSBOrganizationEditPage tests", () => {
       fireEvent.click(submitButton);
 
       await waitFor(() => expect(mockToast).toBeCalled());
-      expect(mockToast).toBeCalledWith(
-        "Organization Updated - id: BAL orgTranslation: Basketball Club",
-      );
+      expect(mockToast).toBeCalledWith("Organization Updated - orgCode: BAL");
 
       expect(mockNavigate).toBeCalledWith({ to: "/ucsborganization" });
 
       expect(axiosMock.history.put.length).toBe(1); // times called
-      expect(axiosMock.history.put[0].params).toEqual({ id: "BAL" });
+      expect(axiosMock.history.put[0].params).toEqual({ orgCode: "BAL" });
       expect(axiosMock.history.put[0].data).toBe(
         JSON.stringify({
+          orgCode: "BAL",
           orgTranslationShort: "Best Basketball Club",
           orgTranslation: "UCSB Best Basketball Club",
+          inactive: "false",
         }),
       ); // posted object
     });
@@ -167,19 +176,23 @@ describe("UCSBOrganizationEditPage tests", () => {
         </QueryClientProvider>,
       );
 
-      //await screen.findByTestId("UCSBOrganizationForm-orgCode");
+      await screen.findByTestId("UCSBOrganizationForm-orgCode");
 
-      // const orgCodeField = screen.getByTestId("UCSBOrganizationForm-orgCode");
-      // const orgTranslationShortField = screen.getByTestId("UCSBOrganizationForm-orgTranslationShort");
-      // const orgTranslationField= screen.getByTestId("UCSBOrganizationForm-orgTranslation");
-      // const inactiveField = screen.getByTestId("UCSBOrganizationForm-inactive");
-      // const submitButton = screen.getByTestId("UCSBOrganizationForm-submit");
-      await screen.findByLabelText("OrgCode");
-      const orgCodeField = screen.getByLabelText("OrgCode");
-      const orgTranslationShortField = screen.getByLabelText("OrgTranslationShort");
-      const orgTranslationField = screen.getByLabelText("OrgTranslation");
-      const inactiveField = screen.getByLabelText("Inactive");
+      const orgCodeField = screen.getByTestId("UCSBOrganizationForm-orgCode");
+      const orgTranslationShortField = screen.getByTestId(
+        "UCSBOrganizationForm-orgTranslationShort",
+      );
+      const orgTranslationField = screen.getByTestId(
+        "UCSBOrganizationForm-orgTranslation",
+      );
+      const inactiveField = screen.getByTestId("UCSBOrganizationForm-inactive");
       const submitButton = screen.getByTestId("UCSBOrganizationForm-submit");
+      // await screen.findByLabelText("OrgCode");
+      // const orgCodeField = screen.getByLabelText("OrgCode");
+      // const orgTranslationShortField = screen.getByLabelText("OrgTranslationShort");
+      // const orgTranslationField = screen.getByLabelText("OrgTranslation");
+      // const inactiveField = screen.getByLabelText("Inactive");
+      // const submitButton = screen.getByTestId("UCSBOrganizationForm-submit");
 
       expect(orgCodeField).toHaveValue("BAL");
       expect(orgTranslationShortField).toHaveValue("Basketball Club");
@@ -190,14 +203,14 @@ describe("UCSBOrganizationEditPage tests", () => {
       fireEvent.change(orgTranslationShortField, {
         target: { value: "Best Basketball Club" },
       });
-      fireEvent.change(orgTranslationField, { target: { value: "Best Basketball Club" } });
+      fireEvent.change(orgTranslationField, {
+        target: { value: "Best Basketball Club" },
+      });
 
       fireEvent.click(submitButton);
 
       await waitFor(() => expect(mockToast).toBeCalled());
-      expect(mockToast).toBeCalledWith(
-        "Organization Updated - orgCode: BAL orgTranslationShort: Best Basketball Club",
-      );
+      expect(mockToast).toBeCalledWith("Organization Updated - orgCode: BAL");
       expect(mockNavigate).toBeCalledWith({ to: "/ucsborganization" });
     });
   });
