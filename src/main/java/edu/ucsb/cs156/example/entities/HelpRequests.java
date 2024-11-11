@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
  @AllArgsConstructor
  @NoArgsConstructor
  @Builder
- @Entity(name = "HelpRequests")
+ @Entity(name = "helprequests")
  public class HelpRequests {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
