@@ -20,10 +20,10 @@ import java.time.LocalDateTime;
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 public class MenuItemReviewWebIT extends WebTestCase {
     @Test
-    public void admin_user_can_create_edit_delete_recommendation_request() throws Exception {
+    public void admin_user_can_create_edit_delete_menu_item_review() throws Exception {
         setupUser(true);
 
-        page.getByText("Menu Item Reviews").click();
+        page.getByText("MenuItemReview").click();
 
         LocalDateTime ldt = LocalDateTime.parse("2022-01-03T00:00:00");
 
@@ -36,30 +36,30 @@ public class MenuItemReviewWebIT extends WebTestCase {
         page.getByTestId("MenuItemReviewForm-comments").fill("Very good food");
         page.getByTestId("MenuItemReviewForm-submit").click();
 
-        assertThat(page.getByTestId("MenuItemReviewTable-cell-row-0-col-comments"))
+        assertThat(page.getByTestId("MenuItemReviewsTable-cell-row-0-col-comments"))
                 .hasText("Very good food");
 
-        page.getByTestId("MenuItemReviewTable-cell-row-0-col-Edit-button").click();
+        page.getByTestId("MenuItemReviewsTable-cell-row-0-col-Edit-button").click();
         assertThat(page.getByText("Edit MenuItemReview")).isVisible();
         page.getByTestId("MenuItemReviewForm-comments").fill("Very bad food");
         page.getByTestId("MenuItemReviewForm-submit").click();
 
-        assertThat(page.getByTestId("MenuItemReviewTable-cell-row-0-col-comments"))
+        assertThat(page.getByTestId("MenuItemReviewsTable-cell-row-0-col-comments"))
                 .hasText("Very bad food");
 
-        page.getByTestId("MenuItemReviewTable-cell-row-0-col-Delete-button").click();
+        page.getByTestId("MenuItemReviewsTable-cell-row-0-col-Delete-button").click();
 
-        assertThat(page.getByTestId("MenuItemReviewTable-cell-row-0-col-comments"))
+        assertThat(page.getByTestId("MenuItemReviewsTable-cell-row-0-col-comments"))
                 .not().isVisible();
     }
 
     @Test
-    public void regular_user_cannot_create_recommendation_request() throws Exception {
+    public void regular_user_cannot_create_menu_item_review() throws Exception {
         setupUser(false);
 
-        page.getByText("Menu Item Reviews").click();
+        page.getByText("MenuItemReview").click();
 
         assertThat(page.getByText("Create MenuItemReview")).not().isVisible();
-        assertThat(page.getByTestId("MenuItemReviewTable-cell-row-0-col-comments")).not().isVisible();
+        assertThat(page.getByTestId("MenuItemReviewsTable-cell-row-0-col-comments")).not().isVisible();
     }
 }
