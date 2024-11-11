@@ -96,13 +96,9 @@ function App() {
             />
           </>
         )}
-        {hasRole(currentUser, "ROLE_USER") && (
+         {hasRole(currentUser, "ROLE_USER") && (
           <>
-            <Route
-              exact
-              path="/helprequests"
-              element={<HelpRequestIndexPage />}
-            />
+            <Route exact path="/helprequests" element={<HelpRequestIndexPage/>} />
           </>
         )}
         {hasRole(currentUser, "ROLE_ADMIN") && (
@@ -110,12 +106,12 @@ function App() {
             <Route
               exact
               path="/helprequests/edit/:id"
-              element={<HelpRequestEditPage />}
+              element={<HelpRequestEditPage/>}
             />
             <Route
               exact
               path="//helprequests/create"
-              element={<HelpRequestCreatePage />}
+              element={<HelpRequestCreatePage/>}
             />
           </>
         )}
