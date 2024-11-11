@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function UCSBOrganizationForm({
   initialContents,
   submitAction,
-  buttonLabel = "Create",
+  buttonLabel = "Submit",
 }) {
   // Stryker disable all
   const {
