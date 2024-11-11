@@ -3,7 +3,7 @@ import React from "react";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
 import { http, HttpResponse } from "msw";
 import HelpRequestTable from "main/components/HelpRequest/HelpRequestTable";
-import { helpRequestFixtures } from "fixtures/helpRequestsFixtures";
+import { helpRequestsFixtures } from "fixtures/helpRequestsFixtures";
 
 export default {
   title: "components/HelpRequests/HelpRequestTable",
@@ -23,13 +23,13 @@ Empty.args = {
 export const ThreeItemsOrdinaryUser = Template.bind({});
 
 ThreeItemsOrdinaryUser.args = {
-  helpRequests: helpRequestFixtures.threeRequests,
+  helpRequests: helpRequestsFixtures.threeRequests,
   currentUser: currentUserFixtures.userOnly,
 };
 
 export const ThreeItemsAdminUser = Template.bind({});
 ThreeItemsAdminUser.args = {
-  helpRequests: helpRequestFixtures.threeRequests,
+  helpRequests: helpRequestsFixtures.threeRequests,
   currentUser: currentUserFixtures.adminUser,
 };
 
