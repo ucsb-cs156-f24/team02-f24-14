@@ -42,7 +42,7 @@ ThreeItemsOrdinaryUser.parameters = {
     http.get("/api/systemInfo", () => {
       return HttpResponse.json(systemInfoFixtures.showingNeither);
     }),
-    http.get("/api/restaurants/all", () => {
+    http.get("/api/ucsborganization/all", () => {
       return HttpResponse.json(ucsbOrganizationFixtures.threeOrgs);
     }),
   ],
