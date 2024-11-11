@@ -1,14 +1,14 @@
 import React from "react";
-import helpRequestForm from "main/components/HelpRequest/HelpRequestForm";
+import HelpRequestForm from "main/components/HelpRequest/HelpRequestForm";
 import { helpRequestsFixtures } from "fixtures/helpRequestsFixtures";
 
 export default {
-  title: "components/helpRequest/HelpRequest",
-  component: helpRequestForm,
+  title: "components/HelpRequests/HelpRequestForm",
+  component: HelpRequestForm,
 };
 
 const Template = (args) => {
-  return <helpRequestForm {...args} />;
+  return <HelpRequestForm {...args} />;
 };
 
 export const Create = Template.bind({});
