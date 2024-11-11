@@ -26,15 +26,15 @@ Default.parameters = {
         status: 200,
       });
     }),
-    http.get("/api/helprequest", () => {
+    http.get("/api/HelpRequests", () => {
       return HttpResponse.json(helpRequestsFixtures.threeRequests[0], {
         status: 200,
       });
     }),
-    http.put("/api/helprequest", () => {
+    http.put("/api/HelpRequests", () => {
       return HttpResponse.json({}, { status: 200 });
     }),
-    http.put("/api/helprequest", (req) => {
+    http.put("/api/HelpRequests", (req) => {
       window.alert("PUT: " + req.url + " and body: " + req.body);
       return HttpResponse.json({}, { status: 200 });
     }),
