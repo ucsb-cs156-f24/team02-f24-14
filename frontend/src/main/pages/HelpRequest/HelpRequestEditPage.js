@@ -5,7 +5,6 @@ import { Navigate } from "react-router-dom";
 import { useBackend, useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 
-
 export default function HelpRequestEditPage({ storybook = false }) {
   let { id } = useParams();
 
@@ -44,7 +43,9 @@ export default function HelpRequestEditPage({ storybook = false }) {
   });
 
   const onSuccess = (helpRequest) => {
-    toast(`HelpRequest Updated - id: ${helpRequest.id} requester email: ${helpRequest.requesterEmail}`);
+    toast(
+      `HelpRequest Updated - id: ${helpRequest.id} requester email: ${helpRequest.requesterEmail}`,
+    );
   };
 
   const mutation = useBackendMutation(
