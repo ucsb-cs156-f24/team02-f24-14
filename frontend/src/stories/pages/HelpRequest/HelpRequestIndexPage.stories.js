@@ -26,7 +26,7 @@ Empty.parameters = {
         status: 200,
       });
     }),
-    http.get("/api/helprequest/all", () => {
+    http.get("/api/HelpRequests/all", () => {
       return HttpResponse.json([], { status: 200 });
     }),
   ],
@@ -42,7 +42,7 @@ ThreeItemsOrdinaryUser.parameters = {
     http.get("/api/systemInfo", () => {
       return HttpResponse.json(systemInfoFixtures.showingNeither);
     }),
-    http.get("/api/helprequest/all", () => {
+    http.get("/api/HelpRequests/all", () => {
       return HttpResponse.json(helpRequestsFixtures.threeRequests);
     }),
   ],
@@ -58,12 +58,12 @@ ThreeItemsAdminUser.parameters = {
     http.get("/api/systemInfo", () => {
       return HttpResponse.json(systemInfoFixtures.showingNeither);
     }),
-    http.get("/api/helprequest/all", () => {
+    http.get("/api/HelpRequests/all", () => {
       return HttpResponse.json(helpRequestsFixtures.threeRequests);
     }),
-    http.delete("/api/helprequest", () => {
+    http.delete("/api/HelpRequests", () => {
       return HttpResponse.json(
-        { message: "Restaurant deleted successfully" },
+        { message: "HelpRequest deleted successfully" },
         { status: 200 },
       );
     }),
