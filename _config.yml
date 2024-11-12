@@ -20,4 +20,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-f24/team02-f24-14
 owner: ucsb-cs156-f24
 repo_name: team02-f24-14
-pull_requests: [{"author":{"id":"U_kgDOB76BMA","is_bot":false,"login":"kev-yan","name":""},"headRefName":"kevin-UCSBOrganization-e2e","number":138,"title":"created e2e tests for UCSBOrganization","url":"https://github.com/ucsb-cs156-f24/team02-f24-14/pull/138"}]
+pull_requests: []
