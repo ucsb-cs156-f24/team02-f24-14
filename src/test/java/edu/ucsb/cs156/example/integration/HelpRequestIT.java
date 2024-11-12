@@ -69,8 +69,8 @@ public class HelpRequestIT {
                                 .explanation("explain")
                                 .solved(true) // Assuming 'solved' is a boolean
                                 .build();
-            
-                                
+
+
                 helpRequestsRepository.save(helpRequest);
 
                 // act
